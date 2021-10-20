@@ -17,7 +17,7 @@ namespace JotunnModStub
     [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
     [BepInDependency(Jotunn.Main.ModGuid)]
     //[NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.Minor)]
-    internal class JotunnModStub : BaseUnityPlugin
+    internal class Spawners : BaseUnityPlugin
     {
         public const string PluginGUID = "viktorbrenek.spawners";
         public const string PluginName = "Spawners";
@@ -59,8 +59,12 @@ namespace JotunnModStub
          private void LoadAssetBundle()
         {
             // Load asset bundle from embedded resources
-            Jotunn.Logger.LogInfo($"Embedded resources: {string.Join(",", typeof(JotunnModStub).Assembly.GetManifestResourceNames())}");
-            _embeddedResourceBundle = AssetUtils.LoadAssetBundleFromResources("spawnerbossone", typeof(JotunnModStub).Assembly);
+            Jotunn.Logger.LogInfo($"Embedded resources: {string.Join(",", typeof(Spawners).Assembly.GetManifestResourceNames())}");
+            _embeddedResourceBundle = AssetUtils.LoadAssetBundleFromResources("spawnerbossone", typeof(Spawners).Assembly);
+             
+                // Create and add a custom item
+            var eikthyrSpawner = _embeddedResourceBundle.LoadAsset<GameObject>("eikthyrspawner");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(eikthyrSpawner, true)); 
         }
 
         private void UnloadAssetBundle()
