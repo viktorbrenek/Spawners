@@ -7,8 +7,8 @@
     <ProjectGuid>{DEAF4438-8089-40ED-8175-398E1261D45B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JotunnModStub</RootNamespace>
-    <AssemblyName>JotunnModStub</AssemblyName>
+    <RootNamespace>Sporelings</RootNamespace>
+    <AssemblyName>Sporelings</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -83,7 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-	<EmbeddedResource Include="AssetsEmbedded\viktorshroom" />
+    <EmbeddedResource Include="AssetsEmbedded\viktorshroom" />
     <None Include="packages.config" />
     <None Include="README.md" />
   </ItemGroup>
