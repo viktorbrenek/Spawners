@@ -5,6 +5,17 @@ VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spawners", "JotunnModStub\Spawners.csproj", "{DEAF4438-8089-40ED-8175-398E1261D45B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C90BCD1F-D836-47F9-B8D4-8D17E15BD2FC}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		DoPrebuild.props = DoPrebuild.props
+		Environment.props = Environment.props
+		LICENSE = LICENSE
+		publish.ps1 = publish.ps1
+		README.MD = README.MD
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
