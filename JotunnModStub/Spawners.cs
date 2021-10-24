@@ -47,7 +47,7 @@ namespace Sporelings
     private void Awake()
     {
 
-      On.SpawnArea.Awake += 
+      On.SpawnArea.Awake += SpawnArea_Awake;
 
       // ReSharper disable once StringLiteralTypo
       _assetBundle = AssetUtils.LoadAssetBundleFromResources("viktorshroom", typeof(Shroomer).Assembly);
@@ -65,9 +65,17 @@ namespace Sporelings
       _assetBundle.Unload(false);
     }
 
+    private void SpawnArea_Awake(On.SpawnArea.orig_Awake orig, SpawnArea self)
+    {
+        if (ZNetView.m_forceDisableInit)
+        {
+            Destroy(self);
+            return;
+        }
+        orig(self);
+    }
 
-
-    private void LoadPieces()
+        private void LoadPieces()
     {
       AddShroomerSpawner();
     }
