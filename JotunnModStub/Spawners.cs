@@ -24,9 +24,14 @@ namespace Sporelings
     [UsedImplicitly] public static Shroomer Instance;
 
     // ReSharper disable once IdentifierTypo
+    // TADY SE MUSÍ UDĚLAT JAKOBY PROMĚNÁ PRO VŠECHNY PŘEDMĚTY KTERÝ CHCEŠ PŘIDÁVAT = TYPU CRAFTING/NON CRAFTING 
     private GameObject _shroomerSpear;
+    private GameObject _redcrystal;
+    private GameObject _trophyshroomer;
+    private GameObject _shroomie;
 
     // ReSharper disable twice IdentifierTypo
+    // TADY SE MUSÍ UDĚLAT JAKOBY PROMĚNÁ PRO VŠECHNY PŘEDMĚTY KTERÝ CHCEŠ PŘIDÁVAT = TYPU BUILDING 
     private GameObject _shroomerSpawnerPiece;
     private AssetBundle _assetBundle;
 
@@ -37,9 +42,13 @@ namespace Sporelings
       Instance = this;
     }
 
+
     [UsedImplicitly]
     private void Awake()
     {
+
+      On.SpawnArea.Awake += 
+
       // ReSharper disable once StringLiteralTypo
       _assetBundle = AssetUtils.LoadAssetBundleFromResources("viktorshroom", typeof(Shroomer).Assembly);
 
@@ -56,27 +65,51 @@ namespace Sporelings
       _assetBundle.Unload(false);
     }
 
+
+
     private void LoadPieces()
     {
       AddShroomerSpawner();
     }
+
 
     private void LoadPrefabs()
     {
       AddShroomerSpear();
     }
 
+    // TADY SE PŘIDÁVAJÍ VĚCI NA CRAFTING
+
     #region Prefabs
+
+    // TADY JE CELEJ VOID = KTEREJ V SOBĚ DRŽÍ LOAD ITEMŮ CO SE CRAFTÍ - ODKAZUJE SE NA NĚJ NA ZAČÁTKU A JE TO ASI FUNKCE
 
     private void AddShroomerSpear()
     {
-      // ReSharper disable once StringLiteralTypo
+
+      //ZÁLOHA TADY NAČÍTÁM NOVEJ PŘEDMĚT CO SE NECRAFTÍ = MALINY, RESOURCES CO PADADJÍ Z MONSTER ATP 
+      // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
+      _redcrystal = _assetBundle.LoadAsset<GameObject>("RedCrystal");
+
+      _shroomie = _assetBundle.LoadAsset<GameObject>("Shroomie");
+
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
       _shroomerSpear = _assetBundle.LoadAsset<GameObject>("ShroomerSpear");
+        
+      _trophyshroomer = _assetBundle.LoadAsset<GameObject>("TrophyShroomer");
 
 #if DEBUG
       // ReSharper disable once StringLiteralTypo
       Jotunn.Logger.LogDebug($"_shroomerSpear == null : {_shroomerSpear == null}"); // This is null?
 #endif
+
+      // ItemManager.Instance.AddItem(new CustomItem(_shroomerSpear, false)); // Non Craftable version ZÁLOHA - tady zkouším RedCrystal přidat tak, aby šel vyhodit z INV
+      ItemManager.Instance.AddItem(new CustomItem(_redcrystal, false)); // Non Craftable version
+      ItemManager.Instance.AddItem(new CustomItem(_shroomie, false));
+      // Tady = přidání "itemu" - non craftable - odkaz na původní proměnou nahoře + vynecháme vytvoření crafting configu. = neobjeví se jako craftable
+      // tady zkusím ještě přehodit případně pořadí = nevím jestli půjde referovat na crystal do receptu před tím, než ho přidám jako item = takže ho dám před ten recept
+
+      ItemManager.Instance.AddItem(new CustomItem(_trophyshroomer, false));
 
       ItemManager.Instance.AddItem(new CustomItem(_shroomerSpear, false, new ItemConfig
       {
@@ -94,18 +127,30 @@ namespace Sporelings
           }
           , new RequirementConfig
           {
-            Item = "Crystal"
+            Item = "Wood"
             , Amount = 10
             , AmountPerLevel = 10
           }
+          , new RequirementConfig
+          {
+            Item = "RedCrystal"
+            , Amount = 5
+            , AmountPerLevel = 5
+          }
         }
       }));
+       // TADY SE PŘIDÁVAJÍ INGREDIENCE = V PODSTATĚ PODOBNÉ JAKO CONFIGY V RRR
 
-      // ItemManager.Instance.AddItem(new CustomItem(_shroomerSpear, false)); // Non Craftable version
+       // TADY ZKOUŠÍM LOADNOUT SHROOMERA JAKO PREFAB, ABY ŠEL VYVOLAT KDYŽ POTŘEBUJU, NEBO SPAWNOVAT PŘES SPAWN THAT _assetBundle SE VZTAHUJE K LINKU ÚPLNĚ NAHOŘE
+       var Shroomer = _assetBundle.LoadAsset<GameObject>("Shroomer");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(Shroomer, true)); 
+
+      
     }
 
     #endregion
-
+    
+    // TADY SE PŘIDÁVAJÍ VĚCI NA BUILDING
     #region Pieces
 
     // ReSharper disable twice IdentifierTypo
