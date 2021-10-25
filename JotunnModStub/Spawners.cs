@@ -26,6 +26,8 @@ namespace Sporelings
     // ReSharper disable once IdentifierTypo
     // TADY SE MUSÍ UDĚLAT JAKOBY PROMĚNÁ PRO VŠECHNY PŘEDMĚTY KTERÝ CHCEŠ PŘIDÁVAT = TYPU CRAFTING/NON CRAFTING 
     private GameObject _shroomerSpear;
+    private GameObject _redbullet;
+    private GameObject _crystalgun;
     private GameObject _redcrystal;
     private GameObject _trophyshroomer;
     private GameObject _shroomie;
@@ -103,6 +105,10 @@ namespace Sporelings
 
       // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
       _shroomerSpear = _assetBundle.LoadAsset<GameObject>("ShroomerSpear");
+
+      _redbullet = _assetBundle.LoadAsset<GameObject>("RedBullet");
+
+      _crystalgun = _assetBundle.LoadAsset<GameObject>("CrystalGun");
         
       _trophyshroomer = _assetBundle.LoadAsset<GameObject>("TrophyShroomer");
 
@@ -147,13 +153,67 @@ namespace Sporelings
           }
         }
       }));
+
+      ItemManager.Instance.AddItem(new CustomItem(_redbullet, false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Red Crystal Bullet"
+        , Amount = 5
+        , CraftingStation = "piece_workbench"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "Resin"
+            , Amount = 1
+            , AmountPerLevel = 10
+          }
+          
+          , new RequirementConfig
+          {
+            Item = "RedCrystal"
+            , Amount = 1
+            , AmountPerLevel = 5
+          }
+        }
+      }));
+
+      ItemManager.Instance.AddItem(new CustomItem(_crystalgun, false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Crystal Gun"
+        , Amount = 1
+        , CraftingStation = "piece_workbench"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "Resin"
+            , Amount = 25
+            , AmountPerLevel = 10
+          }
+          , new RequirementConfig
+          {
+            Item = "Wood"
+            , Amount = 10
+            , AmountPerLevel = 10
+          }
+          , new RequirementConfig
+          {
+            Item = "RedCrystal"
+            , Amount = 5
+            , AmountPerLevel = 5
+          }
+        }
+      }));
        // TADY SE PŘIDÁVAJÍ INGREDIENCE = V PODSTATĚ PODOBNÉ JAKO CONFIGY V RRR
 
        // TADY ZKOUŠÍM LOADNOUT SHROOMERA JAKO PREFAB, ABY ŠEL VYVOLAT KDYŽ POTŘEBUJU, NEBO SPAWNOVAT PŘES SPAWN THAT _assetBundle SE VZTAHUJE K LINKU ÚPLNĚ NAHOŘE
        var Shroomer = _assetBundle.LoadAsset<GameObject>("Shroomer");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(Shroomer, true)); 
 
-      
+       var dungeoncrystal = _assetBundle.LoadAsset<GameObject>("CrystalDungeon");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(dungeoncrystal, true)); 
     }
 
     #endregion
