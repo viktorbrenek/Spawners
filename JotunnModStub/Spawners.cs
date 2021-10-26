@@ -214,6 +214,9 @@ namespace Sporelings
 
        var dungeoncrystal = _assetBundle.LoadAsset<GameObject>("CrystalDungeon");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(dungeoncrystal, true)); 
+
+       var grugnpc = _assetBundle.LoadAsset<GameObject>("Grug");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(grugnpc, true)); 
     }
 
     #endregion
