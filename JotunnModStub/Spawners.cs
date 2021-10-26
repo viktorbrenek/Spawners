@@ -30,6 +30,7 @@ namespace Sporelings
     private GameObject _crystalgun;
     private GameObject _redcrystal;
     private GameObject _trophyshroomer;
+    private GameObject _trophygrawl;
     private GameObject _shroomie;
 
     // ReSharper disable twice IdentifierTypo
@@ -112,6 +113,8 @@ namespace Sporelings
         
       _trophyshroomer = _assetBundle.LoadAsset<GameObject>("TrophyShroomer");
 
+      _trophygrawl = _assetBundle.LoadAsset<GameObject>("TrophyGrawl");
+
 #if DEBUG
       // ReSharper disable once StringLiteralTypo
       Jotunn.Logger.LogDebug($"_shroomerSpear == null : {_shroomerSpear == null}"); // This is null?
@@ -124,6 +127,8 @@ namespace Sporelings
       // tady zkusím ještě přehodit případně pořadí = nevím jestli půjde referovat na crystal do receptu před tím, než ho přidám jako item = takže ho dám před ten recept
 
       ItemManager.Instance.AddItem(new CustomItem(_trophyshroomer, false));
+
+      ItemManager.Instance.AddItem(new CustomItem(_trophygrawl, false));
 
       ItemManager.Instance.AddItem(new CustomItem(_shroomerSpear, false, new ItemConfig
       {
@@ -217,6 +222,12 @@ namespace Sporelings
 
        var grugnpc = _assetBundle.LoadAsset<GameObject>("Grug");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(grugnpc, true)); 
+
+       var grawlnpc = _assetBundle.LoadAsset<GameObject>("Grawl");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(grawlnpc, true)); 
+
+       var grawlenemy = _assetBundle.LoadAsset<GameObject>("GrawlEnemy");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(grawlenemy, true)); 
     }
 
     #endregion
