@@ -9,51 +9,55 @@ using UnityEngine;
 
 namespace Sporelings
 {
-  [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
-  [BepInDependency(Main.ModGuid)]
-  [UsedImplicitly]
-  // ReSharper disable once IdentifierTypo
-  public class Shroomer : BaseUnityPlugin
-  {
-    // ReSharper disable once MemberCanBePrivate.Global
-    public const string PluginGuid = "viktor44.sporelings";
-    public const string PluginName = "Sporelings";
-    public const string PluginVersion = "0.0.2";
-
-    // ReSharper disable once MemberCanBePrivate.Global
-    [UsedImplicitly] public static Shroomer Instance;
-
-    // ReSharper disable once IdentifierTypo
-    // TADY SE MUSÍ UDĚLAT JAKOBY PROMĚNÁ PRO VŠECHNY PŘEDMĚTY KTERÝ CHCEŠ PŘIDÁVAT = TYPU CRAFTING/NON CRAFTING 
-    private GameObject _shroomerSpear;
-    private GameObject _redbullet;
-    private GameObject _crystalgun;
-    private GameObject _redcrystal;
-    private GameObject _trophyshroomer;
-    private GameObject _trophygrawl;
-    private GameObject _shroomie;
-
-    // ReSharper disable twice IdentifierTypo
-    // TADY SE MUSÍ UDĚLAT JAKOBY PROMĚNÁ PRO VŠECHNY PŘEDMĚTY KTERÝ CHCEŠ PŘIDÁVAT = TYPU BUILDING 
-    private GameObject _shroomerSpawnerPiece;
-    private AssetBundle _assetBundle;
-
-
-    // ReSharper disable once IdentifierTypo
-    public Shroomer()
-    {
-      Instance = this;
-    }
-
-
+    [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
+    [BepInDependency(Main.ModGuid)]
     [UsedImplicitly]
-    private void Awake()
+    // ReSharper disable once IdentifierTypo
+    public class Shroomer : BaseUnityPlugin
     {
+        // ReSharper disable once MemberCanBePrivate.Global
+        public const string PluginGuid = "viktor44.sporelings";
+        public const string PluginName = "Sporelings";
+        public const string PluginVersion = "0.0.2";
 
-      On.SpawnArea.Awake += SpawnArea_Awake;
+        // ReSharper disable once MemberCanBePrivate.Global
+        [UsedImplicitly] public static Shroomer Instance;
 
-      // ReSharper disable once StringLiteralTypo
-      _assetBundle = AssetUtils.LoadAssetBundleFromResources("viktorshroom", typeof(Shroomer).Assembly);
+        // ReSharper disable once IdentifierTypo
+        // TADY SE MUSÍ UDĚLAT JAKOBY PROMĚNÁ PRO VŠECHNY PŘEDMĚTY KTERÝ CHCEŠ PŘIDÁVAT = TYPU CRAFTING/NON CRAFTING 
+        private GameObject _shroomerSpear;
+        private GameObject _redbullet;
+        private GameObject _crystalgun;
+        private GameObject _redcrystal;
+        private GameObject _trophyshroomer;
+        private GameObject _trophygrawl;
+        private GameObject _shroomie;
+
+        // ReSharper disable twice IdentifierTypo
+        // TADY SE MUSÍ UDĚLAT JAKOBY PROMĚNÁ PRO VŠECHNY PŘEDMĚTY KTERÝ CHCEŠ PŘIDÁVAT = TYPU BUILDING 
+        private GameObject _shroomerSpawnerPiece;
+        private GameObject _shroomerCrystalAltar;
+        private GameObject _shroomerRecaller;
+
+
+        private AssetBundle _assetBundle;
+
+
+        // ReSharper disable once IdentifierTypo
+        public Shroomer()
+        {
+            Instance = this;
+        }
+
+
+        [UsedImplicitly]
+        private void Awake()
+        {
+
+            On.SpawnArea.Awake += SpawnArea_Awake;
+
+            // ReSharper disable once StringLiteralTypo
+            _assetBundle = AssetUtils.LoadAssetBundleFromResources("viktorshroom", typeof(Shroomer).Assembly);
 
 #if DEBUG
       foreach (var assetName in _assetBundle.GetAllAssetNames())
@@ -62,82 +66,85 @@ namespace Sporelings
       }
 #endif
 
-      LoadPrefabs();
-      LoadPieces();
+            LoadPrefabs();
+            LoadPieces();
 
-      _assetBundle.Unload(false);
-    }
-
-    private void SpawnArea_Awake(On.SpawnArea.orig_Awake orig, SpawnArea self)
-    {
-        if (ZNetView.m_forceDisableInit)
-        {
-            Destroy(self);
-            return;
+            _assetBundle.Unload(false);
         }
-        orig(self);
-    }
+
+        private void SpawnArea_Awake(On.SpawnArea.orig_Awake orig, SpawnArea self)
+        {
+            if (ZNetView.m_forceDisableInit)
+            {
+                Destroy(self);
+                return;
+            }
+            orig(self);
+        }
 
         private void LoadPieces()
-    {
-      AddShroomerSpawner();
-    }
+        {
+            AddShroomerSpawner();
+        }
 
 
-    private void LoadPrefabs()
-    {
-      AddShroomerSpear();
-    }
+        private void LoadPrefabs()
+        {
+            AddShroomerSpear();
+        }
 
-    // TADY SE PŘIDÁVAJÍ VĚCI NA CRAFTING
+        // TADY SE PŘIDÁVAJÍ VĚCI NA CRAFTING
 
-    #region Prefabs
+        #region Prefabs
 
-    // TADY JE CELEJ VOID = KTEREJ V SOBĚ DRŽÍ LOAD ITEMŮ CO SE CRAFTÍ - ODKAZUJE SE NA NĚJ NA ZAČÁTKU A JE TO ASI FUNKCE
+        // TADY JE CELEJ VOID = KTEREJ V SOBĚ DRŽÍ LOAD ITEMŮ CO SE CRAFTÍ - ODKAZUJE SE NA NĚJ NA ZAČÁTKU A JE TO ASI FUNKCE
 
-    private void AddShroomerSpear()
-    {
+        private void AddShroomerSpear()
+        {
 
-      //ZÁLOHA TADY NAČÍTÁM NOVEJ PŘEDMĚT CO SE NECRAFTÍ = MALINY, RESOURCES CO PADADJÍ Z MONSTER ATP 
-      // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
-      _redcrystal = _assetBundle.LoadAsset<GameObject>("RedCrystal");
+            //ZÁLOHA TADY NAČÍTÁM NOVEJ PŘEDMĚT CO SE NECRAFTÍ = MALINY, RESOURCES CO PADADJÍ Z MONSTER ATP 
+            // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
+            _redcrystal = _assetBundle.LoadAsset<GameObject>("RedCrystal");
 
-      _shroomie = _assetBundle.LoadAsset<GameObject>("Shroomie");
+            _shroomie = _assetBundle.LoadAsset<GameObject>("Shroomie");
 
-      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
-      _shroomerSpear = _assetBundle.LoadAsset<GameObject>("ShroomerSpear");
+            // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+            _shroomerSpear = _assetBundle.LoadAsset<GameObject>("ShroomerSpear");
 
-      _redbullet = _assetBundle.LoadAsset<GameObject>("RedBullet");
+            _redbullet = _assetBundle.LoadAsset<GameObject>("RedBullet");
 
-      _crystalgun = _assetBundle.LoadAsset<GameObject>("CrystalGun");
-        
-      _trophyshroomer = _assetBundle.LoadAsset<GameObject>("TrophyShroomer");
+            _crystalgun = _assetBundle.LoadAsset<GameObject>("CrystalGun");
 
-      _trophygrawl = _assetBundle.LoadAsset<GameObject>("TrophyGrawl");
+            _trophyshroomer = _assetBundle.LoadAsset<GameObject>("TrophyShroomer");
+
+            _trophygrawl = _assetBundle.LoadAsset<GameObject>("TrophyGrawl");
 
 #if DEBUG
       // ReSharper disable once StringLiteralTypo
       Jotunn.Logger.LogDebug($"_shroomerSpear == null : {_shroomerSpear == null}"); // This is null?
 #endif
 
-      // ItemManager.Instance.AddItem(new CustomItem(_shroomerSpear, false)); // Non Craftable version ZÁLOHA - tady zkouším RedCrystal přidat tak, aby šel vyhodit z INV
-      ItemManager.Instance.AddItem(new CustomItem(_redcrystal, false)); // Non Craftable version
-      ItemManager.Instance.AddItem(new CustomItem(_shroomie, false));
-      // Tady = přidání "itemu" - non craftable - odkaz na původní proměnou nahoře + vynecháme vytvoření crafting configu. = neobjeví se jako craftable
-      // tady zkusím ještě přehodit případně pořadí = nevím jestli půjde referovat na crystal do receptu před tím, než ho přidám jako item = takže ho dám před ten recept
+            // ItemManager.Instance.AddItem(new CustomItem(_shroomerSpear, false)); // Non Craftable version ZÁLOHA - tady zkouším RedCrystal přidat tak, aby šel vyhodit z INV
+            ItemManager.Instance.AddItem(new CustomItem(_redcrystal, false)); // Non Craftable version
+            ItemManager.Instance.AddItem(new CustomItem(_shroomie, false));
+            // Tady = přidání "itemu" - non craftable - odkaz na původní proměnou nahoře + vynecháme vytvoření crafting configu. = neobjeví se jako craftable
+            // tady zkusím ještě přehodit případně pořadí = nevím jestli půjde referovat na crystal do receptu před tím, než ho přidám jako item = takže ho dám před ten recept
 
-      ItemManager.Instance.AddItem(new CustomItem(_trophyshroomer, false));
+            ItemManager.Instance.AddItem(new CustomItem(_trophyshroomer, false));
 
-      ItemManager.Instance.AddItem(new CustomItem(_trophygrawl, false));
+            ItemManager.Instance.AddItem(new CustomItem(_trophygrawl, false));
 
-      ItemManager.Instance.AddItem(new CustomItem(_shroomerSpear, false, new ItemConfig
-      {
-        // ReSharper disable once StringLiteralTypo
-        Name = "Shroom Spear"
-        , Amount = 1
-        , CraftingStation = "piece_workbench"
-        , Requirements = new[]
-        {
+            ItemManager.Instance.AddItem(new CustomItem(_shroomerSpear, false, new ItemConfig
+            {
+                // ReSharper disable once StringLiteralTypo
+                Name = "Shroom Spear"
+              ,
+                Amount = 1
+              ,
+                CraftingStation = "piece_workbench"
+              ,
+                Requirements = new[]
+              {
           new RequirementConfig
           {
             Item = "Resin"
@@ -157,23 +164,26 @@ namespace Sporelings
             , AmountPerLevel = 5
           }
         }
-      }));
+            }));
 
-      ItemManager.Instance.AddItem(new CustomItem(_redbullet, false, new ItemConfig
-      {
-        // ReSharper disable once StringLiteralTypo
-        Name = "Red Crystal Bullet"
-        , Amount = 5
-        , CraftingStation = "piece_workbench"
-        , Requirements = new[]
-        {
+            ItemManager.Instance.AddItem(new CustomItem(_redbullet, false, new ItemConfig
+            {
+                // ReSharper disable once StringLiteralTypo
+                Name = "Red Crystal Bullet"
+              ,
+                Amount = 5
+              ,
+                CraftingStation = "piece_workbench"
+              ,
+                Requirements = new[]
+              {
           new RequirementConfig
           {
             Item = "Resin"
             , Amount = 1
             , AmountPerLevel = 10
           }
-          
+
           , new RequirementConfig
           {
             Item = "RedCrystal"
@@ -181,16 +191,19 @@ namespace Sporelings
             , AmountPerLevel = 5
           }
         }
-      }));
+            }));
 
-      ItemManager.Instance.AddItem(new CustomItem(_crystalgun, false, new ItemConfig
-      {
-        // ReSharper disable once StringLiteralTypo
-        Name = "Crystal Gun"
-        , Amount = 1
-        , CraftingStation = "piece_workbench"
-        , Requirements = new[]
-        {
+            ItemManager.Instance.AddItem(new CustomItem(_crystalgun, false, new ItemConfig
+            {
+                // ReSharper disable once StringLiteralTypo
+                Name = "Crystal Gun"
+              ,
+                Amount = 1
+              ,
+                CraftingStation = "piece_workbench"
+              ,
+                Requirements = new[]
+              {
           new RequirementConfig
           {
             Item = "Resin"
@@ -210,63 +223,169 @@ namespace Sporelings
             , AmountPerLevel = 5
           }
         }
-      }));
-       // TADY SE PŘIDÁVAJÍ INGREDIENCE = V PODSTATĚ PODOBNÉ JAKO CONFIGY V RRR
+            }));
+            // TADY SE PŘIDÁVAJÍ INGREDIENCE = V PODSTATĚ PODOBNÉ JAKO CONFIGY V RRR
 
-       // TADY ZKOUŠÍM LOADNOUT SHROOMERA JAKO PREFAB, ABY ŠEL VYVOLAT KDYŽ POTŘEBUJU, NEBO SPAWNOVAT PŘES SPAWN THAT _assetBundle SE VZTAHUJE K LINKU ÚPLNĚ NAHOŘE
-       var Shroomer = _assetBundle.LoadAsset<GameObject>("Shroomer");
-            PrefabManager.Instance.AddPrefab(new CustomPrefab(Shroomer, true)); 
+            // TADY ZKOUŠÍM LOADNOUT SHROOMERA JAKO PREFAB, ABY ŠEL VYVOLAT KDYŽ POTŘEBUJU, NEBO SPAWNOVAT PŘES SPAWN THAT _assetBundle SE VZTAHUJE K LINKU ÚPLNĚ NAHOŘE
 
-       var dungeoncrystal = _assetBundle.LoadAsset<GameObject>("CrystalDungeon");
-            PrefabManager.Instance.AddPrefab(new CustomPrefab(dungeoncrystal, true)); 
+            // MONSTRA
+            var Shroomer = _assetBundle.LoadAsset<GameObject>("Shroomer");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(Shroomer, true));
 
-       var grugnpc = _assetBundle.LoadAsset<GameObject>("Grug");
-            PrefabManager.Instance.AddPrefab(new CustomPrefab(grugnpc, true)); 
+            var grawlenemy = _assetBundle.LoadAsset<GameObject>("GrawlEnemy");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(grawlenemy, true));
 
-       var grawlnpc = _assetBundle.LoadAsset<GameObject>("Grawl");
-            PrefabManager.Instance.AddPrefab(new CustomPrefab(grawlnpc, true)); 
+            // DUNGEONY
 
-       var grawlenemy = _assetBundle.LoadAsset<GameObject>("GrawlEnemy");
-            PrefabManager.Instance.AddPrefab(new CustomPrefab(grawlenemy, true)); 
-    }
+            var crydung = _assetBundle.LoadAsset<GameObject>("IslandDungeon");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(crydung, true));
 
-    #endregion
-    
-    // TADY SE PŘIDÁVAJÍ VĚCI NA BUILDING
-    #region Pieces
+            var cryschest = _assetBundle.LoadAsset<GameObject>("crystalchest");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(cryschest, true));
 
-    // ReSharper disable twice IdentifierTypo
-    private void AddShroomerSpawner()
-    {
-      // ReSharper disable once StringLiteralTypo
-      _shroomerSpawnerPiece = _assetBundle.LoadAsset<GameObject>("shroomerspawner");
+            
+
+            // NPCČKA
+
+            var grugnpc = _assetBundle.LoadAsset<GameObject>("Grug");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(grugnpc, true));
+
+            var grawlnpc = _assetBundle.LoadAsset<GameObject>("Grawl");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(grawlnpc, true));
+
+            var gruwlnpc = _assetBundle.LoadAsset<GameObject>("Gruwl");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(gruwlnpc, true));
+
+            var blakenpc = _assetBundle.LoadAsset<GameObject>("Blake");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(blakenpc, true));
+
+            var bobnpc = _assetBundle.LoadAsset<GameObject>("Bob");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(bobnpc, true));
+
+            var grimnpc = _assetBundle.LoadAsset<GameObject>("Grim");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(grimnpc, true));
+
+            var pedronpc = _assetBundle.LoadAsset<GameObject>("Pedro");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(pedronpc, true));
+
+            var pepenpc = _assetBundle.LoadAsset<GameObject>("Pepe");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(pepenpc, true));
+
+            var zeldannpc = _assetBundle.LoadAsset<GameObject>("Zeldan");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(zeldannpc, true));
+
+            var zhaonpc = _assetBundle.LoadAsset<GameObject>("Zhao");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(zhaonpc, true));
+
+            // RESOURCES - STROMY ATP
+
+            var redtree = _assetBundle.LoadAsset<GameObject>("CrystalTree");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(redtree, true));
+
+            var redtreelog = _assetBundle.LoadAsset<GameObject>("CrystalLog");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(redtreelog, true));
+
+            var redtreehalf = _assetBundle.LoadAsset<GameObject>("CrystalLogHalf");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(redtreehalf, true));
+
+
+        }
+
+        #endregion
+
+        // TADY SE PŘIDÁVAJÍ VĚCI NA BUILDING
+        #region Pieces
+
+        // ReSharper disable twice IdentifierTypo
+        private void AddShroomerSpawner()
+        {
+            // ReSharper disable once StringLiteralTypo
+            _shroomerSpawnerPiece = _assetBundle.LoadAsset<GameObject>("shroomerspawner");
+            
+            _shroomerCrystalAltar = _assetBundle.LoadAsset<GameObject>("CrystalAltar");
+
+            _shroomerRecaller = _assetBundle.LoadAsset<GameObject>("Recaller");
 #if DEBUG
       // ReSharper disable twice StringLiteralTypo
       Jotunn.Logger.LogDebug($"_shroomerSpawnerPiece == null : {_shroomerSpawnerPiece == null}"); // This is null?
 #endif
 
-      // ReSharper disable twice IdentifierTypo
-      var shroomerSpawner = new CustomPiece(_shroomerSpawnerPiece,
-        false,
-        new PieceConfig
-        {
-          PieceTable = "_HammerPieceTable"
-          , CraftingStation = ""
-          , Enabled = true
-          , Requirements = new[]
-          {
+            // ReSharper disable twice IdentifierTypo
+            var shroomerSpawner = new CustomPiece(_shroomerSpawnerPiece,
+              false,
+              new PieceConfig
+              {
+                  PieceTable = "_HammerPieceTable"
+                ,
+                  CraftingStation = ""
+                ,
+                  Enabled = true
+                ,
+                  Requirements = new[]
+                {
             new RequirementConfig
             {
               Item = "Wood"
               , Amount = 1
               , Recover = false
             }
-          }
-        });
+                }
+              });
 
-      PieceManager.Instance.AddPiece(shroomerSpawner);
+            PieceManager.Instance.AddPiece(shroomerSpawner);
+
+            // tady zkusím přidat další 
+
+            var RecallShroom = new CustomPiece(_shroomerRecaller,
+              false,
+              new PieceConfig
+              {
+                  PieceTable = "_HammerPieceTable"
+                ,
+                  CraftingStation = ""
+                ,
+                  Enabled = true
+                ,
+                  Requirements = new[]
+                {
+            new RequirementConfig
+            {
+              Item = "Wood"
+              , Amount = 1
+              , Recover = false
+            }
+                }
+              });
+
+            PieceManager.Instance.AddPiece(RecallShroom);
+
+            // další
+            var AltarCrystal = new CustomPiece(_shroomerCrystalAltar,
+              false,
+              new PieceConfig
+              {
+                  PieceTable = "_HammerPieceTable"
+                ,
+                  CraftingStation = ""
+                ,
+                  Enabled = true
+                ,
+                  Requirements = new[]
+                {
+            new RequirementConfig
+            {
+              Item = "Wood"
+              , Amount = 1
+              , Recover = false
+            }
+                }
+              });
+
+            PieceManager.Instance.AddPiece(AltarCrystal);
+            // tady je konec sekce asi
+        }
+
+        #endregion
     }
-
-    #endregion
-  }
 }
+
