@@ -26,21 +26,36 @@ namespace Sporelings
         // ReSharper disable once IdentifierTypo
         // TADY SE MUSÍ UDĚLAT JAKOBY PROMĚNÁ PRO VŠECHNY PŘEDMĚTY KTERÝ CHCEŠ PŘIDÁVAT = TYPU CRAFTING/NON CRAFTING 
         private GameObject _shroomerSpear;
+        //private GameObject _trollback;
         private GameObject _redbullet;
         private GameObject _crystalgun;
+        private GameObject _motaxe;
+        private GameObject _mothelm;
+        private GameObject _motchest;
+        private GameObject _motlegs;
+        private GameObject _motcape;
+        private GameObject _floxsaddle;
         private GameObject _redcrystal;
         private GameObject _trophyshroomer;
+        private GameObject _floxhorn;
+        private GameObject _trophyflox;
+        private GameObject _trophyfmlox;
+        private GameObject _trophyfloxpelt;
+        private GameObject _trophyfloxmeat;
         private GameObject _trophygrawl;
         private GameObject _shroomie;
+        
 
         // ReSharper disable twice IdentifierTypo
         // TADY SE MUSÍ UDĚLAT JAKOBY PROMĚNÁ PRO VŠECHNY PŘEDMĚTY KTERÝ CHCEŠ PŘIDÁVAT = TYPU BUILDING 
         private GameObject _shroomerSpawnerPiece;
         private GameObject _shroomerCrystalAltar;
-        private GameObject _shroomerRecaller;
+        //private GameObject _shroomerRecaller;
 
 
         private AssetBundle _assetBundle;
+
+        
 
 
         // ReSharper disable once IdentifierTypo
@@ -49,6 +64,8 @@ namespace Sporelings
             Instance = this;
         }
 
+        
+        
 
         [UsedImplicitly]
         private void Awake()
@@ -59,6 +76,11 @@ namespace Sporelings
             // ReSharper disable once StringLiteralTypo
             _assetBundle = AssetUtils.LoadAssetBundleFromResources("viktorshroom", typeof(Shroomer).Assembly);
 
+            Jotunn.Managers.ItemManager.Instance.AddStatusEffect(new CustomStatusEffect(ScriptableObject.CreateInstance<GP_Mother>(), false));
+
+            
+
+
 #if DEBUG
       foreach (var assetName in _assetBundle.GetAllAssetNames())
       {
@@ -68,6 +90,7 @@ namespace Sporelings
 
             LoadPrefabs();
             LoadPieces();
+            
 
             _assetBundle.Unload(false);
         }
@@ -86,6 +109,13 @@ namespace Sporelings
         {
             AddShroomerSpawner();
         }
+
+        //tady zkouším přidat special effekty - jako např boss efekt
+
+
+       
+
+        
 
 
         private void LoadPrefabs()
@@ -111,11 +141,35 @@ namespace Sporelings
             // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
             _shroomerSpear = _assetBundle.LoadAsset<GameObject>("ShroomerSpear");
 
+            //_trollback = _assetBundle.LoadAsset<GameObject>("CapeBackpack");
+
             _redbullet = _assetBundle.LoadAsset<GameObject>("RedBullet");
 
             _crystalgun = _assetBundle.LoadAsset<GameObject>("CrystalGun");
 
+            _motaxe = _assetBundle.LoadAsset<GameObject>("BattleaxeMother");
+
+            _mothelm = _assetBundle.LoadAsset<GameObject>("MotherHelmet");
+
+            _motcape = _assetBundle.LoadAsset<GameObject>("MotherCape");
+
+            _motchest = _assetBundle.LoadAsset<GameObject>("MotherChest");
+
+            _motlegs = _assetBundle.LoadAsset<GameObject>("MotherLegs");
+
+            _floxsaddle = _assetBundle.LoadAsset<GameObject>("SaddleFLox");
+
             _trophyshroomer = _assetBundle.LoadAsset<GameObject>("TrophyShroomer");
+
+            _floxhorn = _assetBundle.LoadAsset<GameObject>("FloxHorn");
+
+            _trophyflox = _assetBundle.LoadAsset<GameObject>("FTrophyLox");
+
+            _trophyfmlox = _assetBundle.LoadAsset<GameObject>("FTrophyLoxMother");
+
+            _trophyfloxpelt = _assetBundle.LoadAsset<GameObject>("FLoxPelt");
+
+            _trophyfloxmeat = _assetBundle.LoadAsset<GameObject>("FLoxMeat");
 
             _trophygrawl = _assetBundle.LoadAsset<GameObject>("TrophyGrawl");
 
@@ -132,7 +186,19 @@ namespace Sporelings
 
             ItemManager.Instance.AddItem(new CustomItem(_trophyshroomer, false));
 
+            ItemManager.Instance.AddItem(new CustomItem(_floxhorn, false));
+
+            ItemManager.Instance.AddItem(new CustomItem(_trophyflox, false));
+
+            ItemManager.Instance.AddItem(new CustomItem(_trophyfmlox, false));
+
+            ItemManager.Instance.AddItem(new CustomItem(_trophyfloxpelt, false));
+
+            ItemManager.Instance.AddItem(new CustomItem(_trophyfloxmeat, false));
+
             ItemManager.Instance.AddItem(new CustomItem(_trophygrawl, false));
+
+            //ItemManager.Instance.AddItem(new CustomItem(_trollback, false));
 
             ItemManager.Instance.AddItem(new CustomItem(_shroomerSpear, false, new ItemConfig
             {
@@ -191,7 +257,7 @@ namespace Sporelings
             , AmountPerLevel = 5
           }
         }
-            }));
+            })); 
 
             ItemManager.Instance.AddItem(new CustomItem(_crystalgun, false, new ItemConfig
             {
@@ -224,6 +290,190 @@ namespace Sporelings
           }
         }
             }));
+
+            ItemManager.Instance.AddItem(new CustomItem(_floxsaddle, false, new ItemConfig
+            {
+                // ReSharper disable once StringLiteralTypo
+                Name = "Forest Lox Saddle"
+              ,
+                Amount = 1
+              ,
+                CraftingStation = "piece_workbench"
+              ,
+                Requirements = new[]
+              {
+          new RequirementConfig
+          {
+            Item = "Shroomie"
+            , Amount = 25
+            , AmountPerLevel = 10
+          }
+          , new RequirementConfig
+          {
+            Item = "FineWood"
+            , Amount = 10
+            , AmountPerLevel = 10
+          }
+          , new RequirementConfig
+          {
+            Item = "FLoxPelt"
+            , Amount = 5
+            , AmountPerLevel = 5
+          }
+        }
+            }));
+
+            //mother armor set
+
+            ItemManager.Instance.AddItem(new CustomItem(_motaxe, false, new ItemConfig
+            {
+                // ReSharper disable once StringLiteralTypo
+                Name = "Mother Battleaxe"
+              ,
+                Amount = 1
+              ,
+                CraftingStation = "piece_workbench"
+              ,
+                Requirements = new[]
+              {
+          new RequirementConfig
+          {
+            Item = "Bronze"
+            , Amount = 2
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "FloxPelt"
+            , Amount = 1
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "FloxHorn"
+            , Amount = 4
+            , AmountPerLevel = 3
+          }
+        }
+            }));
+
+            ItemManager.Instance.AddItem(new CustomItem(_mothelm, false, new ItemConfig
+            {
+                // ReSharper disable once StringLiteralTypo
+                Name = "Mother Helm"
+              ,
+                Amount = 1
+              ,
+                CraftingStation = "piece_workbench"
+              ,
+                Requirements = new[]
+              {
+          new RequirementConfig
+          {
+            Item = "Bronze"
+            , Amount = 1
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "FloxPelt"
+            , Amount = 1
+            , AmountPerLevel = 2
+          }
+          , new RequirementConfig
+          {
+            Item = "FloxHorn"
+            , Amount = 2
+            , AmountPerLevel = 2
+          }
+        }
+            }));
+
+            ItemManager.Instance.AddItem(new CustomItem(_motchest, false, new ItemConfig
+            {
+                // ReSharper disable once StringLiteralTypo
+                Name = "Mother Chest"
+              ,
+                Amount = 1
+              ,
+                CraftingStation = "piece_workbench"
+              ,
+                Requirements = new[]
+              {
+          new RequirementConfig
+          {
+            Item = "Bronze"
+            , Amount = 1
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "FloxPelt"
+            , Amount = 3
+            , AmountPerLevel = 3
+          }
+          , new RequirementConfig
+          {
+            Item = "FloxHorn"
+            , Amount = 1
+            , AmountPerLevel = 2
+          }
+        }
+            }));
+
+            ItemManager.Instance.AddItem(new CustomItem(_motcape, false, new ItemConfig
+            {
+                // ReSharper disable once StringLiteralTypo
+                Name = "Mother Cape"
+              ,
+                Amount = 1
+              ,
+                CraftingStation = "piece_workbench"
+              ,
+                Requirements = new[]
+              {
+          
+            new RequirementConfig
+          {
+            Item = "FloxPelt"
+            , Amount = 3
+            , AmountPerLevel = 3
+          }
+          , new RequirementConfig
+          {
+            Item = "FloxHorn"
+            , Amount = 1
+            , AmountPerLevel = 1
+          }
+        }
+            }));
+
+            ItemManager.Instance.AddItem(new CustomItem(_motlegs, false, new ItemConfig
+            {
+                // ReSharper disable once StringLiteralTypo
+                Name = "Mother Legs"
+              ,
+                Amount = 1
+              ,
+                CraftingStation = "piece_workbench"
+              ,
+                Requirements = new[]
+              {
+
+            new RequirementConfig
+          {
+            Item = "FloxPelt"
+            , Amount = 2
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "FloxHorn"
+            , Amount = 3
+            , AmountPerLevel = 3
+          }
+        }
+            }));
             // TADY SE PŘIDÁVAJÍ INGREDIENCE = V PODSTATĚ PODOBNÉ JAKO CONFIGY V RRR
 
             // TADY ZKOUŠÍM LOADNOUT SHROOMERA JAKO PREFAB, ABY ŠEL VYVOLAT KDYŽ POTŘEBUJU, NEBO SPAWNOVAT PŘES SPAWN THAT _assetBundle SE VZTAHUJE K LINKU ÚPLNĚ NAHOŘE
@@ -235,15 +485,39 @@ namespace Sporelings
             var grawlenemy = _assetBundle.LoadAsset<GameObject>("GrawlEnemy");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(grawlenemy, true));
 
+            var grawboss = _assetBundle.LoadAsset<GameObject>("GrawlBoss");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(grawboss, true));
+
+            var loxfor = _assetBundle.LoadAsset<GameObject>("ForestLox");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(loxfor, true));
+
+            var loxforc = _assetBundle.LoadAsset<GameObject>("FLox_Calf");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(loxforc, true));
+
+            var loxform = _assetBundle.LoadAsset<GameObject>("ForestLoxMother");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(loxform, true));
+
             // DUNGEONY
 
             var crydung = _assetBundle.LoadAsset<GameObject>("IslandDungeon");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(crydung, true));
 
+            var cryschestt = _assetBundle.LoadAsset<GameObject>("crystalchesttwo");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(cryschestt, true));
+
             var cryschest = _assetBundle.LoadAsset<GameObject>("crystalchest");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(cryschest, true));
 
-            
+            var cryboss = _assetBundle.LoadAsset<GameObject>("BossAltarOne");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(cryboss, true));
+
+            var magaltar = _assetBundle.LoadAsset<GameObject>("MagicalAnvil");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(magaltar, true));
+
+            var motalt = _assetBundle.LoadAsset<GameObject>("BossStone_Mother");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(motalt, true));
+
+
 
             // NPCČKA
 
@@ -304,7 +578,7 @@ namespace Sporelings
             
             _shroomerCrystalAltar = _assetBundle.LoadAsset<GameObject>("CrystalAltar");
 
-            _shroomerRecaller = _assetBundle.LoadAsset<GameObject>("Recaller");
+            //_shroomerRecaller = _assetBundle.LoadAsset<GameObject>("Recaller");
 #if DEBUG
       // ReSharper disable twice StringLiteralTypo
       Jotunn.Logger.LogDebug($"_shroomerSpawnerPiece == null : {_shroomerSpawnerPiece == null}"); // This is null?
@@ -336,7 +610,7 @@ namespace Sporelings
 
             // tady zkusím přidat další 
 
-            var RecallShroom = new CustomPiece(_shroomerRecaller,
+            /*var RecallShroom = new CustomPiece(_shroomerRecaller,
               false,
               new PieceConfig
               {
@@ -357,7 +631,7 @@ namespace Sporelings
                 }
               });
 
-            PieceManager.Instance.AddPiece(RecallShroom);
+            PieceManager.Instance.AddPiece(RecallShroom);*/
 
             // další
             var AltarCrystal = new CustomPiece(_shroomerCrystalAltar,
