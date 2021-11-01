@@ -16,9 +16,10 @@ namespace Sporelings
             name = $"GP_Mother";
             m_name = $"Mother Power";
             m_tooltip = $"Tooltip Text";
-            m_icon = null; // You already have the code for this in the ss you posted. 
-            m_ttl = 60 * 5; // 60sec * 5 = 5 mins.
-            m_addMaxCarryWeight = 120; // Adds 300 to max weight
+            m_icon = AssetUtils.LoadSpriteFromFile("JotunnModStub/AssetsEmbedded/Mother.png"); // You already have the code for this in the ss you posted.  Otherwise  = put: null;
+            m_time = 5; // 60sec * 5 = 5 mins. /previously ttl
+            m_addMaxCarryWeight = 120; // Adds 120 to max weight
+            m_cooldown = 10; // 10 mins 60 * 10
         }
     }
 }

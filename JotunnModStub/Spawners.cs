@@ -98,7 +98,7 @@ namespace Sporelings
       AddMotherChest();
       AddSaddleFLox();
       AddTrophyShroomer();
-      // AddFloxHorn(); // ToDo: Missing from AssetBundle
+      AddFloxHorn(); // ToDo: Missing from AssetBundle
       AddFTrophyLox();
       AddFTrophyLoxMother();
       AddFLoxPelt();
@@ -378,12 +378,12 @@ namespace Sporelings
             , Amount = 1
             , AmountPerLevel = 1
           }
-          // , new RequirementConfig
-          // {
-          //   Item = "FloxHorn"
-          //   , Amount = 4
-          //   , AmountPerLevel = 3
-          // }
+          , new RequirementConfig
+          {
+           Item = "FloxHorn"
+             , Amount = 4
+             , AmountPerLevel = 3
+           }
         }
       }));
     }
@@ -417,12 +417,12 @@ namespace Sporelings
             , Amount = 1
             , AmountPerLevel = 2
           }
-          // , new RequirementConfig
-          // {
-          //   Item = "FloxHorn"
-          //   , Amount = 2
-          //   , AmountPerLevel = 2
-          // }
+           , new RequirementConfig
+           {
+             Item = "FloxHorn"
+             , Amount = 2
+             , AmountPerLevel = 2
+           }
         }
       }));
     }
@@ -450,12 +450,12 @@ namespace Sporelings
             , Amount = 3
             , AmountPerLevel = 3
           }
-          // , new RequirementConfig
-          // {
-          //   Item = "FloxHorn"
-          //   , Amount = 1
-          //   , AmountPerLevel = 1
-          // }
+           , new RequirementConfig
+           {
+             Item = "FloxHorn"
+             , Amount = 1
+             , AmountPerLevel = 1
+           }
         }
       }));
     }
@@ -483,12 +483,12 @@ namespace Sporelings
             , Amount = 2
             , AmountPerLevel = 1
           }
-          // , new RequirementConfig
-          // {
-          //   Item = "FloxHorn"
-          //   , Amount = 3
-          //   , AmountPerLevel = 3
-          // }
+           , new RequirementConfig
+           {
+             Item = "FloxHorn"
+             , Amount = 3
+             , AmountPerLevel = 3
+           }
         }
       }));
     }
@@ -522,12 +522,12 @@ namespace Sporelings
             , Amount = 3
             , AmountPerLevel = 3
           }
-          // , new RequirementConfig
-          // {
-          //   Item = "FloxHorn"
-          //   , Amount = 1
-          //   , AmountPerLevel = 2
-          // }
+           , new RequirementConfig
+           {
+             Item = "FloxHorn"
+             , Amount = 1
+             , AmountPerLevel = 2
+           }
         }
       }));
     }
