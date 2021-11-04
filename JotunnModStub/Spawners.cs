@@ -32,8 +32,10 @@ namespace Sporelings
     {
       Instance = this;
     }
-
+    
+    //tady přidávám skill type 
     public static Skills.SkillType FireMagic = 0;
+    public static Skills.SkillType IntellSkill = 0;
 
     [UsedImplicitly]
     private void Awake()
@@ -66,6 +68,35 @@ namespace Sporelings
             Player.m_localPlayer.RaiseSkill(FireMagic, 1);
         }
     }
+    
+    //method by DigitalRoot = increaces a skill based on status effect of the weapon 
+    
+    /*
+	public float m_damageModifier = 1f;
+    public float m_statusEffects = "SE_INT";
+
+    
+    
+   public void ModifyAttack(global::Skills.SkillType IntellSkill, ref global::HitData hitData)
+    {
+            foreach (global::StatusEffect SE_INT in this.m_statusEffects)
+            {
+              SE_INT.ModifyAttack(skill, ref hitData);
+            }
+            if (SkillType == Polearms || Bows || Pickaxes == global::Skills.SkillType.All)
+            {
+              hitData.m_damage.Modify(this.m_damageModifier);
+            }
+
+    }
+
+    public override void ModifyAttack(global::Skills.SkillType IntellSkill, ref global::HitData hitData)
+    {
+            if (SkillType == Polearms || Bows || Pickaxes == global::Skills.SkillType.All)
+            {
+              hitData.m_damage.Modify(this.m_damageModifier);
+            }
+    }*/
 
     [UsedImplicitly]
     private void OnDestroy()
@@ -86,19 +117,29 @@ namespace Sporelings
       ItemManager.Instance.AddStatusEffect(new CustomStatusEffect(ScriptableObject.CreateInstance<SetEffect_MotherArmor>(), false));
       ItemManager.Instance.AddStatusEffect(new CustomStatusEffect(ScriptableObject.CreateInstance<SetEffect_SageArmor>(), false));
       ItemManager.Instance.AddStatusEffect(new CustomStatusEffect(ScriptableObject.CreateInstance<SetEffect_SkyrionArmor>(), false));
+      ItemManager.Instance.AddStatusEffect(new CustomStatusEffect(ScriptableObject.CreateInstance<SE_INT>(), false));
     }
 
     private void LoadSkills()
     {
         // Test adding a skill with a texture
     
-        Sprite mothericon = PrefabManager.Cache.GetPrefab<ItemDrop>("MotherHelmet").m_itemData.GetIcon();
+        
         FireMagic = SkillManager.Instance.AddSkill(new SkillConfig
         {
             Identifier = "com.jotunn.JotunnModExample.firemagic",
             Name = "Fire Magic",
             Description = "Basic magic of any Wizard!",
-            Icon = mothericon,
+            Icon = _assetBundle.LoadAsset<Sprite>("NecromancerIcons_60_t"),
+            IncreaseStep = 1f
+        });
+
+        IntellSkill = SkillManager.Instance.AddSkill(new SkillConfig
+        {
+            Identifier = "com.jotunn.JotunnModExample.intelligence",
+            Name = "Intelligence",
+            Description = "Basic attribute of any Wizard!",
+            Icon = _assetBundle.LoadAsset<Sprite>("NecromancerIcons_60_t"),
             IncreaseStep = 1f
         });
     }
@@ -136,6 +177,7 @@ namespace Sporelings
       AddSkyChest();
       AddSkyLegs();
       AddSageStaff();
+      
       AddScholarHat();
       AddScholarTunic();
       AddWizardBelt();
@@ -409,6 +451,8 @@ namespace Sporelings
         }
       }));
     }
+
+   
         
     private void AddRedCrystal()
     {

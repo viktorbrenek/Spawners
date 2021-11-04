@@ -62,6 +62,20 @@ namespace Sporelings
             m_raiseSkillModifier = 1;
         }
     }
+
+    public class SE_INT : SE_Stats
+    {
+        public SE_INT()
+        {   
+            
+            name = $"SE_INT";
+            m_name = $"Intelligence";
+            m_tooltip = $"Tooltip Text";
+            m_icon = PrefabManager.Cache.GetPrefab<ItemDrop>("LinenHelmet").m_itemData.GetIcon(); // You already have the code for this in the ss you posted.  Otherwise  = put: null;
+            m_damageModifier = 1;
+        }
+    }
+    
     
    
 
