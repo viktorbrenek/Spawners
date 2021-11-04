@@ -33,6 +33,8 @@ namespace Sporelings
       Instance = this;
     }
 
+    public static Skills.SkillType FireMagic = 0;
+
     [UsedImplicitly]
     private void Awake()
     {
@@ -50,9 +52,19 @@ namespace Sporelings
       LoadPrefabs();
       LoadPieces();
       LoadStatusEffects();
+      LoadSkills();
+      
 
       _assetBundle.Unload(false);
       _harmony = Harmony.CreateAndPatchAll(typeof(Shroomer).Assembly, PluginGuid);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F8))
+        { // Set a breakpoint here to break on F6 key press
+            Player.m_localPlayer.RaiseSkill(FireMagic, 1);
+        }
     }
 
     [UsedImplicitly]
@@ -75,6 +87,23 @@ namespace Sporelings
       ItemManager.Instance.AddStatusEffect(new CustomStatusEffect(ScriptableObject.CreateInstance<SetEffect_SageArmor>(), false));
       ItemManager.Instance.AddStatusEffect(new CustomStatusEffect(ScriptableObject.CreateInstance<SetEffect_SkyrionArmor>(), false));
     }
+
+    private void LoadSkills()
+    {
+        // Test adding a skill with a texture
+    
+        Sprite mothericon = PrefabManager.Cache.GetPrefab<ItemDrop>("MotherHelmet").m_itemData.GetIcon();
+        FireMagic = SkillManager.Instance.AddSkill(new SkillConfig
+        {
+            Identifier = "com.jotunn.JotunnModExample.firemagic",
+            Name = "Fire Magic",
+            Description = "Basic magic of any Wizard!",
+            Icon = mothericon,
+            IncreaseStep = 1f
+        });
+    }
+
+
 
     // TADY SE MUSÍ UDĚLAT JAKOBY PROMĚNÁ PRO VŠECHNY PŘEDMĚTY KTERÝ CHCEŠ PŘIDÁVAT = TYPU BUILDING 
     private void LoadPieces()
