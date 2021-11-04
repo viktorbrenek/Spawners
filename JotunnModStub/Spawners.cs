@@ -71,6 +71,9 @@ namespace Sporelings
     private void LoadStatusEffects()
     {
       ItemManager.Instance.AddStatusEffect(new CustomStatusEffect(ScriptableObject.CreateInstance<GP_Mother>(), false));
+      ItemManager.Instance.AddStatusEffect(new CustomStatusEffect(ScriptableObject.CreateInstance<SetEffect_MotherArmor>(), false));
+      ItemManager.Instance.AddStatusEffect(new CustomStatusEffect(ScriptableObject.CreateInstance<SetEffect_SageArmor>(), false));
+      ItemManager.Instance.AddStatusEffect(new CustomStatusEffect(ScriptableObject.CreateInstance<SetEffect_SkyrionArmor>(), false));
     }
 
     // TADY SE MUSÍ UDĚLAT JAKOBY PROMĚNÁ PRO VŠECHNY PŘEDMĚTY KTERÝ CHCEŠ PŘIDÁVAT = TYPU BUILDING 
@@ -78,6 +81,7 @@ namespace Sporelings
     {
       AddShroomerSpawner();
       AddAltarCrystal();
+      AddSpinWheel();
       // AddRecaller(); // ToDo: Reenable
     }
 
@@ -96,6 +100,21 @@ namespace Sporelings
       AddMotherCape();
       AddMotherLegs();
       AddMotherChest();
+      AddSageHat();
+      AddSageCloak();
+      AddSageChest();
+      AddSkyHat();
+      AddSkyChest();
+      AddSkyLegs();
+      AddSageStaff();
+      AddScholarHat();
+      AddScholarTunic();
+      AddWizardBelt();
+      AddLanthernBelt();
+      AddToxAxe();
+      AddToxPick();
+      AddWatPick();
+      AddGoldPick();
       AddSaddleFLox();
       AddTrophyShroomer();
       AddFloxHorn(); // ToDo: Missing from AssetBundle
@@ -104,6 +123,31 @@ namespace Sporelings
       AddFLoxPelt();
       AddFLoxMeat();
       AddTrophyGrawl();
+      AddHempFlower();
+      AddLinen();
+      AddFlamaxFlower();
+      AddFlamaxLinen();
+      AddBronzeLinen();
+      AddGoldLinen();
+      AddSilverLinen();
+      AddDeepLinen();
+      AddFlaxLin();
+      AddFrostaxFlower();
+      AddFrostaxLinen();
+      AddShroomLinen();
+      AddSilkSpider();
+      AddSpiderLinen();
+      AddSwampLinen();
+      AddSwampFlower();
+      AddWaterLinen();
+      AddOreGold();
+      AddGold();
+      AddOreTox();
+      AddTox();
+      AddOreSky();
+      AddSky();
+      AddOreWat();
+      AddWat();
     }
 
     private void LoadPrefabs()
@@ -133,6 +177,11 @@ namespace Sporelings
 
       var loxform = _assetBundle.LoadAsset<GameObject>("ForestLoxMother");
       PrefabManager.Instance.AddPrefab(new CustomPrefab(loxform, true));
+      
+      // GUILDY
+
+      var guildmo = _assetBundle.LoadAsset<GameObject>("VillageHouseOne");
+      PrefabManager.Instance.AddPrefab(new CustomPrefab(guildmo, true));
 
       // DUNGEONY
 
@@ -153,6 +202,9 @@ namespace Sporelings
 
       var motalt = _assetBundle.LoadAsset<GameObject>("BossStone_Mother");
       PrefabManager.Instance.AddPrefab(new CustomPrefab(motalt, true));
+
+      var mobossal = _assetBundle.LoadAsset<GameObject>("BossAltarMother");
+      PrefabManager.Instance.AddPrefab(new CustomPrefab(mobossal, true));
 
       // NPCČKA
 
@@ -196,6 +248,47 @@ namespace Sporelings
 
       var redtreehalf = _assetBundle.LoadAsset<GameObject>("CrystalLogHalf");
       PrefabManager.Instance.AddPrefab(new CustomPrefab(redtreehalf, true));
+
+      //flowers
+
+      var hemphar = _assetBundle.LoadAsset<GameObject>("Hemp");
+      PrefabManager.Instance.AddPrefab(new CustomPrefab(hemphar, true));
+
+      var amanitahar = _assetBundle.LoadAsset<GameObject>("Amanita");
+      PrefabManager.Instance.AddPrefab(new CustomPrefab(amanitahar, true));
+
+      var flamahar = _assetBundle.LoadAsset<GameObject>("Flamax");
+      PrefabManager.Instance.AddPrefab(new CustomPrefab(flamahar, true));
+
+      var flosthar = _assetBundle.LoadAsset<GameObject>("Frostax");
+      PrefabManager.Instance.AddPrefab(new CustomPrefab(flosthar, true));
+
+      var spidehar = _assetBundle.LoadAsset<GameObject>("SpiderWeb");
+      PrefabManager.Instance.AddPrefab(new CustomPrefab(spidehar, true));
+
+      var Swamphar = _assetBundle.LoadAsset<GameObject>("Swamperia");
+      PrefabManager.Instance.AddPrefab(new CustomPrefab(Swamphar, true));
+
+      var algyone = _assetBundle.LoadAsset<GameObject>("Algas");
+      PrefabManager.Instance.AddPrefab(new CustomPrefab(algyone, true));
+
+      var algytwo = _assetBundle.LoadAsset<GameObject>("WaterAlgas");
+      PrefabManager.Instance.AddPrefab(new CustomPrefab(algytwo, true));
+
+      var algythr = _assetBundle.LoadAsset<GameObject>("DarkAlgas");
+      PrefabManager.Instance.AddPrefab(new CustomPrefab(algythr, true));
+
+      var veingo = _assetBundle.LoadAsset<GameObject>("GoldVein");
+      PrefabManager.Instance.AddPrefab(new CustomPrefab(veingo, true));
+
+      var veinwa = _assetBundle.LoadAsset<GameObject>("WaterVein");
+      PrefabManager.Instance.AddPrefab(new CustomPrefab(veinwa, true));
+
+      var veinsky = _assetBundle.LoadAsset<GameObject>("SkyVein");
+      PrefabManager.Instance.AddPrefab(new CustomPrefab(veinsky, true));
+
+      var veintox = _assetBundle.LoadAsset<GameObject>("ToxicVein");
+      PrefabManager.Instance.AddPrefab(new CustomPrefab(veintox, true));
     }
 
     #region Items
@@ -246,12 +339,114 @@ namespace Sporelings
       }));
     }
 
+    private void AddSageStaff()
+    {
+      //ZÁLOHA TADY NAČÍTÁM NOVEJ PŘEDMĚT CO SE NECRAFTÍ = MALINY, RESOURCES CO PADADJÍ Z MONSTER ATP 
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("SageStaff");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      // ItemManager.Instance.AddItem(new CustomItem(_shroomerSpear, false)); // Non Craftable version ZÁLOHA - tady zkouším RedCrystal přidat tak, aby šel vyhodit z INV
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Sage Staff"
+        , Amount = 1
+        , CraftingStation = "piece_workbench"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "Resin"
+            , Amount = 25
+            , AmountPerLevel = 10
+          }
+          , new RequirementConfig
+          {
+            Item = "Toxicon"
+            , Amount = 10
+            , AmountPerLevel = 10
+          }
+          , new RequirementConfig
+          {
+            Item = "RedCrystal"
+            , Amount = 5
+            , AmountPerLevel = 5
+          }
+        }
+      }));
+    }
+        
     private void AddRedCrystal()
     {
       // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
 
       // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
       var itemPrefab = _assetBundle.LoadAsset<GameObject>("RedCrystal");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false)); // Non Craftable version
+    }
+
+    private void AddOreGold()
+    {
+      // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
+
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("GoldOre");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false)); // Non Craftable version
+    }
+
+    private void AddOreTox()
+    {
+      // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
+
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("ToxicOre");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false)); // Non Craftable version
+    }
+
+    private void AddOreWat()
+    {
+      // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
+
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("WaterOre");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false)); // Non Craftable version
+    }
+
+    private void AddOreSky()
+    {
+      // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
+
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("SkyOre");
 
 #if DEBUG
       // ReSharper disable once StringLiteralTypo
@@ -272,6 +467,496 @@ namespace Sporelings
 #endif
 
       ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false));
+    }
+        
+    private void AddFlamaxFlower()
+    {
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("FlamaxFlower");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false));
+    }
+
+    private void AddFrostaxFlower()
+    {
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("FrostaxFlower");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false));
+    }
+
+    private void AddSilkSpider()
+    {
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("SilkSpider");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false));
+    }
+
+    private void AddSwampFlower()
+    {
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("SwamperiaFlower");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false));
+    }
+
+    private void AddHempFlower()
+    {
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("HempFlower");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false));
+    }
+    
+    private void AddGold()
+    {
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("Gold");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false));
+    }
+
+    private void AddWat()
+    {
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("Waterion");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false));
+    }
+
+    private void AddSky()
+    {
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("Skyrion");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false));
+    }
+
+    private void AddTox()
+    {
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("Toxicon");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false));
+    }
+    
+
+    private void AddLinen()
+    {
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("Linen");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab,false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Linen"
+        , Amount = 1
+        , CraftingStation = "SpinWheel"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "HempFlower"
+            , Amount = 1
+            , AmountPerLevel = 4
+          }
+
+        }
+      }));
+    }
+
+    private void AddBronzeLinen()
+    {
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("BronzeLinen");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab,false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Bronze Linen"
+        , Amount = 3
+        , CraftingStation = "SpinWheel"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "HempFlower"
+            , Amount = 1
+            , AmountPerLevel = 4
+          },
+          new RequirementConfig
+          {
+            Item = "Bronze"
+            , Amount = 1
+            , AmountPerLevel = 4
+          }
+
+        }
+      }));
+    }
+
+    private void AddGoldLinen()
+    {
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("GoldLinen");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab,false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Gold Linen"
+        , Amount = 3
+        , CraftingStation = "SpinWheel"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "HempFlower"
+            , Amount = 1
+            , AmountPerLevel = 4
+          },
+          new RequirementConfig
+          {
+            Item = "SurtlingCore"
+            , Amount = 7
+            , AmountPerLevel = 4
+          }
+
+        }
+      }));
+    }
+
+    private void AddSilverLinen()
+    {
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("SilverLinen");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab,false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Silver Linen"
+        , Amount = 3
+        , CraftingStation = "SpinWheel"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "HempFlower"
+            , Amount = 1
+            , AmountPerLevel = 4
+          },
+          new RequirementConfig
+          {
+            Item = "Silver"
+            , Amount = 1
+            , AmountPerLevel = 4
+          }
+
+        }
+      }));
+    }
+
+    private void AddDeepLinen()
+    {
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("DeepLinen");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab,false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Deep Linen"
+        , Amount = 10
+        , CraftingStation = "SpinWheel"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "HempFlower"
+            , Amount = 1
+            , AmountPerLevel = 4
+          },
+          new RequirementConfig
+          {
+            Item = "DragonTear"
+            , Amount = 1
+            , AmountPerLevel = 4
+          }
+
+        }
+      }));
+    }
+
+    private void AddFlaxLin()
+    {
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("FlaxLinen");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab,false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Flax Linen"
+        , Amount = 1
+        , CraftingStation = "SpinWheel"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "Flax"
+            , Amount = 1
+            , AmountPerLevel = 4
+          }
+
+        }
+      }));
+    }
+
+    private void AddShroomLinen()
+    {
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("Shroomhemp");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab,false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Shroom Linen"
+        , Amount = 1
+        , CraftingStation = "SpinWheel"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "Shroomie"
+            , Amount = 2
+            , AmountPerLevel = 4
+          }
+
+        }
+      }));
+    }
+
+    private void AddSpiderLinen()
+    {
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("SpiderSilk");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab,false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Spider Silk"
+        , Amount = 1
+        , CraftingStation = "SpinWheel"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "SilkSpider"
+            , Amount = 1
+            , AmountPerLevel = 4
+          }
+
+        }
+      }));
+    }
+
+    private void AddFlamaxLinen()
+    {
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("FlamaxLinen");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab,false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Flamax Linen"
+        , Amount = 2
+        , CraftingStation = "SpinWheel"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "FlamaxFlower"
+            , Amount = 1
+            , AmountPerLevel = 4
+          }
+
+        }
+      }));
+    }
+
+    private void AddFrostaxLinen()
+    {
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("FrostaxLinen");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab,false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Frostax Linen"
+        , Amount = 2
+        , CraftingStation = "SpinWheel"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "FrostaxFlower"
+            , Amount = 1
+            , AmountPerLevel = 4
+          }
+
+        }
+      }));
+    }
+
+    private void AddSwampLinen()
+    {
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("Swampax");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab,false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Swampax Linen"
+        , Amount = 1
+        , CraftingStation = "SpinWheel"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "SwamperiaFlower"
+            , Amount = 1
+            , AmountPerLevel = 4
+          }
+
+        }
+      }));
+    }
+
+    private void AddWaterLinen()
+    {
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("WaterLinen");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab,false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Water Linen"
+        , Amount = 1
+        , CraftingStation = "SpinWheel"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "FishCooked"
+            , Amount = 3
+            , AmountPerLevel = 4
+          }
+
+        }
+      }));
     }
 
     private void AddRedBullet()
@@ -402,7 +1087,7 @@ namespace Sporelings
         // ReSharper disable once StringLiteralTypo
         Name = "Mother Helm"
         , Amount = 1
-        , CraftingStation = "piece_workbench"
+        , CraftingStation = "SpinWheel"
         , Requirements = new[]
         {
           new RequirementConfig
@@ -441,7 +1126,7 @@ namespace Sporelings
         // ReSharper disable once StringLiteralTypo
         Name = "Mother Cape"
         , Amount = 1
-        , CraftingStation = "piece_workbench"
+        , CraftingStation = "SpinWheel"
         , Requirements = new[]
         {
           new RequirementConfig
@@ -474,7 +1159,7 @@ namespace Sporelings
         // ReSharper disable once StringLiteralTypo
         Name = "Mother Legs"
         , Amount = 1
-        , CraftingStation = "piece_workbench"
+        , CraftingStation = "SpinWheel"
         , Requirements = new[]
         {
           new RequirementConfig
@@ -507,7 +1192,7 @@ namespace Sporelings
         // ReSharper disable once StringLiteralTypo
         Name = "Mother Chest"
         , Amount = 1
-        , CraftingStation = "piece_workbench"
+        , CraftingStation = "SpinWheel"
         , Requirements = new[]
         {
           new RequirementConfig
@@ -526,6 +1211,552 @@ namespace Sporelings
            {
              Item = "FloxHorn"
              , Amount = 1
+             , AmountPerLevel = 2
+           }
+        }
+      }));
+    }
+
+     private void AddSageHat()
+    {
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("LinenHelmet");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Wizard Hat"
+        , Amount = 1
+        , CraftingStation = "SpinWheel"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "Linen"
+            , Amount = 1
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "BronzeLinen"
+            , Amount = 3
+            , AmountPerLevel = 3
+          }
+           , new RequirementConfig
+           {
+             Item = "Swampax"
+             , Amount = 1
+             , AmountPerLevel = 2
+           }
+        }
+      }));
+    }
+
+    private void AddSageCloak()
+    {
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("LinenCape");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Wizard Cloak"
+        , Amount = 1
+        , CraftingStation = "SpinWheel"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "Linen"
+            , Amount = 1
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "BronzeLinen"
+            , Amount = 3
+            , AmountPerLevel = 3
+          }
+           , new RequirementConfig
+           {
+             Item = "Swampax"
+             , Amount = 1
+             , AmountPerLevel = 2
+           }
+        }
+      }));
+    }
+
+    private void AddSageChest()
+    {
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("LinenTunic");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Wizard Tunic"
+        , Amount = 1
+        , CraftingStation = "SpinWheel"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "Linen"
+            , Amount = 1
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "BronzeLinen"
+            , Amount = 3
+            , AmountPerLevel = 3
+          }
+           , new RequirementConfig
+           {
+             Item = "Swampax"
+             , Amount = 1
+             , AmountPerLevel = 2
+           }
+        }
+      }));
+    }
+
+    private void AddSkyChest()
+    {
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("SkyrionCuirass");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Skyrion Cuirass"
+        , Amount = 1
+        , CraftingStation = "SpinWheel"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "DeepLinen"
+            , Amount = 10
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "FlamaxLinen"
+            , Amount = 10
+            , AmountPerLevel = 3
+          }
+           , new RequirementConfig
+           {
+             Item = "Skyrion"
+             , Amount = 8
+             , AmountPerLevel = 2
+           }
+        }
+      }));
+    }
+
+    private void AddSkyHat()
+    {
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("SkyrionHelmet");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Skyrion Helmet"
+        , Amount = 1
+        , CraftingStation = "SpinWheel"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "DeepLinen"
+            , Amount = 10
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "FlamaxLinen"
+            , Amount = 10
+            , AmountPerLevel = 3
+          }
+           , new RequirementConfig
+           {
+             Item = "Skyrion"
+             , Amount = 8
+             , AmountPerLevel = 2
+           }
+        }
+      }));
+    }
+
+     private void AddSkyLegs()
+    {
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("SkyrionGreaves");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Skyrion Greaves"
+        , Amount = 1
+        , CraftingStation = "SpinWheel"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "DeepLinen"
+            , Amount = 10
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "FlamaxLinen"
+            , Amount = 10
+            , AmountPerLevel = 3
+          }
+           , new RequirementConfig
+           {
+             Item = "Skyrion"
+             , Amount = 8
+             , AmountPerLevel = 2
+           }
+        }
+      }));
+    }
+
+     private void AddScholarHat()
+    {
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("ScholarHelmet");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Scholar Hat"
+        , Amount = 1
+        , CraftingStation = "SpinWheel"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "Swampax"
+            , Amount = 10
+            , AmountPerLevel = 3
+          }
+          , new RequirementConfig
+          {
+            Item = "Shroomhemp"
+            , Amount = 10
+            , AmountPerLevel = 3
+          }
+           , new RequirementConfig
+           {
+             Item = "Gold"
+             , Amount = 16
+             , AmountPerLevel = 2
+           }
+        }
+      }));
+    }
+
+    private void AddScholarTunic()
+    {
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("ScholarTunic");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Scholar Tunic"
+        , Amount = 1
+        , CraftingStation = "SpinWheel"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "Swampax"
+            , Amount = 10
+            , AmountPerLevel = 3
+          }
+          , new RequirementConfig
+          {
+            Item = "Shroomhemp"
+            , Amount = 10
+            , AmountPerLevel = 3
+          }
+           , new RequirementConfig
+           {
+             Item = "Gold"
+             , Amount = 16
+             , AmountPerLevel = 2
+           }
+        }
+      }));
+    }
+
+    private void AddWizardBelt()
+    {
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("WizardBelt");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Wizard Belt"
+        , Amount = 1
+        , CraftingStation = "SpinWheel"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "Swampax"
+            , Amount = 10
+            , AmountPerLevel = 3
+          }
+          , new RequirementConfig
+          {
+            Item = "Shroomhemp"
+            , Amount = 10
+            , AmountPerLevel = 3
+          }
+           , new RequirementConfig
+           {
+             Item = "FlaxLinen"
+             , Amount = 16
+             , AmountPerLevel = 2
+           }
+        }
+      }));
+    }
+
+    private void AddLanthernBelt()
+    {
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("LanthernBelt");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Lanthern Belt"
+        , Amount = 1
+        , CraftingStation = "SpinWheel"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "FlaxLinen"
+            , Amount = 10
+            , AmountPerLevel = 3
+          }
+          , new RequirementConfig
+          {
+            Item = "FlamaxLinen"
+            , Amount = 10
+            , AmountPerLevel = 3
+          }
+           , new RequirementConfig
+           {
+             Item = "Gold"
+             , Amount = 16
+             , AmountPerLevel = 2
+           }
+        }
+      }));
+    }
+
+    private void AddToxAxe()
+    {
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("ToxiconBronze");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Toxicon Axe"
+        , Amount = 1
+        , CraftingStation = "forge"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "Toxicon"
+            , Amount = 10
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "Gold"
+            , Amount = 2
+            , AmountPerLevel = 3
+          }
+           , new RequirementConfig
+           {
+             Item = "FineWood"
+             , Amount = 8
+             , AmountPerLevel = 2
+           }
+        }
+      }));
+    }
+
+    private void AddToxPick()
+    {
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("PickaxeToxicon");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Toxicon Pickaxe"
+        , Amount = 1
+        , CraftingStation = "forge"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "Toxicon"
+            , Amount = 10
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "Gold"
+            , Amount = 2
+            , AmountPerLevel = 3
+          }
+           , new RequirementConfig
+           {
+             Item = "FineWood"
+             , Amount = 8
+             , AmountPerLevel = 2
+           }
+        }
+      }));
+    }
+
+    private void AddWatPick()
+    {
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("PickaxeWaterion");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Waterion Pickaxe"
+        , Amount = 1
+        , CraftingStation = "forge"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "Waterion"
+            , Amount = 10
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "Gold"
+            , Amount = 2
+            , AmountPerLevel = 3
+          }
+           , new RequirementConfig
+           {
+             Item = "FineWood"
+             , Amount = 8
+             , AmountPerLevel = 2
+           }
+        }
+      }));
+    }
+
+    private void AddGoldPick()
+    {
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("PickaxeGolden");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+      {
+        // ReSharper disable once StringLiteralTypo
+        Name = "Gold Pickaxe"
+        , Amount = 1
+        , CraftingStation = "forge"
+        , Requirements = new[]
+        {
+          new RequirementConfig
+          {
+            Item = "Gold"
+            , Amount = 12
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "Copper"
+            , Amount = 1
+            , AmountPerLevel = 3
+          }
+           , new RequirementConfig
+           {
+             Item = "FineWood"
+             , Amount = 8
              , AmountPerLevel = 2
            }
         }
@@ -663,6 +1894,47 @@ namespace Sporelings
     // TADY SE PŘIDÁVAJÍ VĚCI NA BUILDING
 
     // ReSharper disable twice IdentifierTypo
+
+    private void AddSpinWheel()
+    {
+      // ReSharper disable once StringLiteralTypo
+      var prefab = _assetBundle.LoadAsset<GameObject>("SpinWheel");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} prefab == null : {prefab == null}"); // This is null?
+#endif
+
+      // ReSharper disable twice IdentifierTypo
+      var spintowin = new CustomPiece(prefab,
+        false,
+        new PieceConfig
+        {
+          PieceTable = "_HammerPieceTable"
+          , CraftingStation = ""
+          , Enabled = true
+          , Requirements = new[]
+          {
+            new RequirementConfig
+            {
+              Item = "Wood"
+              , Amount = 20
+              , Recover = false
+            },
+            new RequirementConfig
+            {
+              Item = "Copper"
+              , Amount = 5
+              , Recover = false
+            }
+          }
+        });
+
+      PieceManager.Instance.AddPiece(spintowin);
+
+      //_shroomerRecaller = _assetBundle.LoadAsset<GameObject>("Recaller");
+    }
+
     private void AddShroomerSpawner()
     {
       // ReSharper disable once StringLiteralTypo
