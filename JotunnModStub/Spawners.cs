@@ -219,6 +219,8 @@ namespace Sporelings
       AddSky();
       AddOreWat();
       AddWat();
+      AddOreCor();
+      AddCor();
     }
 
     private void LoadPrefabs()
@@ -248,6 +250,9 @@ namespace Sporelings
 
       var loxform = _assetBundle.LoadAsset<GameObject>("ForestLoxMother");
       PrefabManager.Instance.AddPrefab(new CustomPrefab(loxform, true));
+
+      var corruptedone = _assetBundle.LoadAsset<GameObject>("Corrupted");
+      PrefabManager.Instance.AddPrefab(new CustomPrefab(corruptedone, true));
       
       // GUILDY
 
@@ -276,6 +281,9 @@ namespace Sporelings
 
       var mobossal = _assetBundle.LoadAsset<GameObject>("BossAltarMother");
       PrefabManager.Instance.AddPrefab(new CustomPrefab(mobossal, true));
+
+      var corruptedspawner = _assetBundle.LoadAsset<GameObject>("CorruptionSpawner");
+      PrefabManager.Instance.AddPrefab(new CustomPrefab(corruptedspawner, true));
 
       // NPCČKA
 
@@ -529,6 +537,21 @@ namespace Sporelings
       ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false)); // Non Craftable version
     }
 
+     private void AddOreCor()
+    {
+      // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
+
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("CorruptedOre");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false)); // Non Craftable version
+    }
+
     private void AddShroomie()
     {
       // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
@@ -611,6 +634,19 @@ namespace Sporelings
     {
       // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
       var itemPrefab = _assetBundle.LoadAsset<GameObject>("Gold");
+
+#if DEBUG
+      // ReSharper disable once StringLiteralTypo
+      Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+      ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false));
+    }
+
+    private void AddCor()
+    {
+      // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+      var itemPrefab = _assetBundle.LoadAsset<GameObject>("Corrupton");
 
 #if DEBUG
       // ReSharper disable once StringLiteralTypo
