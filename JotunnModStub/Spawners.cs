@@ -16,7 +16,7 @@ namespace Sporelings
     [BepInDependency(Main.ModGuid)]
     [UsedImplicitly]
     // ReSharper disable once IdentifierTypo
-    public class Shroomer : BaseUnityPlugin  
+    public class Shroomer : BaseUnityPlugin
     {
         // ReSharper disable once MemberCanBePrivate.Global
         public const string PluginGuid = "viktor44.sporelings";
@@ -26,6 +26,8 @@ namespace Sporelings
         // ReSharper disable once MemberCanBePrivate.Global
         [UsedImplicitly] public static Shroomer Instance;
         private AssetBundle _assetBundle;
+        internal static ScriptableObject SE_Gwyrn;
+
 
         // ReSharper disable once IdentifierTypo
         public Shroomer()
@@ -39,6 +41,7 @@ namespace Sporelings
         {
             // ReSharper disable once StringLiteralTypo
             _assetBundle = AssetUtils.LoadAssetBundleFromResources("viktorshroom", typeof(Shroomer).Assembly);
+            SE_Gwyrn = _assetBundle.LoadAsset<ScriptableObject>("BeltA_stat");
 
 #if DEBUG
             foreach (var assetName in _assetBundle.GetAllAssetNames())
@@ -50,13 +53,17 @@ namespace Sporelings
             LoadItems();
             LoadPrefabs();
             LoadPieces();
-            //LoadStatusEffects();
-
+            LoadStatusEffects();
+            PrefabManager.OnVanillaPrefabsAvailable += LoadSEStat;
             _assetBundle.Unload(false);
             _harmony = Harmony.CreateAndPatchAll(typeof(Shroomer).Assembly, PluginGuid);
         }
 
-
+        internal void LoadSEStat()
+        {
+            ObjectDB.instance.m_StatusEffects.Add(SE_Gwyrn as StatusEffect);
+            PrefabManager.OnVanillaPrefabsAvailable -= LoadSEStat;
+        }
 
         [UsedImplicitly]
         private void OnDestroy()
@@ -75,7 +82,7 @@ namespace Sporelings
         {
             ItemManager.Instance.AddStatusEffect(new CustomStatusEffect(ScriptableObject.CreateInstance<GP_Gwyrn>(), false));
         }
-        
+
 
         // TADY SE MUSÍ UDĚLAT JAKOBY PROMĚNÁ PRO VŠECHNY PŘEDMĚTY KTERÝ CHCEŠ PŘIDÁVAT = TYPU BUILDING 
         private void LoadPieces()
@@ -962,18 +969,14 @@ namespace Sporelings
         private void AddOreCor()
         {
             // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
-
             // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
             var itemPrefab = _assetBundle.LoadAsset<GameObject>("CorruptedOre");
-
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
             Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
 #endif
-
             ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false)); // Non Craftable version
         }
-
         */
 
 
@@ -993,4 +996,3 @@ namespace Sporelings
         #endregion
     }
 }
-
