@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+﻿/*using HarmonyLib;
 using JetBrains.Annotations;
 using System;
 
@@ -46,3 +46,5 @@ namespace Sporelings
     }
   }
 }
+*/
+

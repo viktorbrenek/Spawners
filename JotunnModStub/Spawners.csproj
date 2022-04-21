@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\JotunnLib.2.3.12\build\JotunnLib.props" Condition="Exists('..\packages\JotunnLib.2.3.12\build\JotunnLib.props')" />
+  <Import Project="..\packages\JotunnLib.2.6.2\build\JotunnLib.props" Condition="Exists('..\packages\JotunnLib.2.6.2\build\JotunnLib.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -41,12 +41,65 @@
   <PropertyGroup>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony, Version=2.5.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\HarmonyX.2.5.7\lib\net45\0Harmony.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="0Harmony">
+      <HintPath>..\packages\HarmonyX.2.10.0\lib\net35\0Harmony.dll</HintPath>
     </Reference>
-    <Reference Include="Jotunn, Version=2.3.12.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\JotunnLib.2.3.12\lib\net462\Jotunn.dll</HintPath>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="assembly_googleanalytics">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\assembly_googleanalytics.dll</HintPath>
+    </Reference>
+    <Reference Include="assembly_guiutils">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\assembly_guiutils.dll</HintPath>
+    </Reference>
+    <Reference Include="assembly_lux">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\assembly_lux.dll</HintPath>
+    </Reference>
+    <Reference Include="assembly_postprocessing">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\assembly_postprocessing.dll</HintPath>
+    </Reference>
+    <Reference Include="assembly_simplemeshcombine">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\assembly_simplemeshcombine.dll</HintPath>
+    </Reference>
+    <Reference Include="assembly_steamworks">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\assembly_steamworks.dll</HintPath>
+    </Reference>
+    <Reference Include="assembly_sunshafts">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\assembly_sunshafts.dll</HintPath>
+    </Reference>
+    <Reference Include="assembly_utils">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\assembly_utils.dll</HintPath>
+    </Reference>
+    <Reference Include="assembly_valheim">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\assembly_valheim.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\BepInExPack_Valheim\BepInEx\core\BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx.Harmony">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\BepInExPack_Valheim\BepInEx\core\BepInEx.Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx.Preloader">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\BepInExPack_Valheim\BepInEx\core\BepInEx.Preloader.dll</HintPath>
+    </Reference>
+    <Reference Include="HarmonyXInterop">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\BepInExPack_Valheim\BepInEx\core\HarmonyXInterop.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.Annotations, Version=4242.42.42.42, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.2022.1.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="Jotunn, Version=2.6.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\JotunnLib.2.6.2\lib\net462\Jotunn.dll</HintPath>
+    </Reference>
+    <Reference Include="MMHOOK_assembly_googleanalytics">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\BepInEx\plugins\MMHOOK\MMHOOK_assembly_googleanalytics.dll</HintPath>
+    </Reference>
+    <Reference Include="MMHOOK_assembly_guiutils">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\BepInEx\plugins\MMHOOK\MMHOOK_assembly_guiutils.dll</HintPath>
+    </Reference>
+    <Reference Include="MMHOOK_assembly_lux">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\BepInEx\plugins\MMHOOK\MMHOOK_assembly_lux.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
       <HintPath>..\packages\Mono.Cecil.0.11.4\lib\net40\Mono.Cecil.dll</HintPath>
@@ -64,14 +117,20 @@
       <HintPath>..\packages\Mono.Cecil.0.11.4\lib\net40\Mono.Cecil.Rocks.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="MonoMod, Version=21.11.1.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoMod.21.11.1.1\lib\net452\MonoMod.exe</HintPath>
+    <Reference Include="Mono.Posix">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\FC BŘEZEN modded\unstripped_corlib\Mono.Posix.dll</HintPath>
     </Reference>
-    <Reference Include="MonoMod.RuntimeDetour, Version=21.11.1.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoMod.RuntimeDetour.21.11.1.1\lib\net452\MonoMod.RuntimeDetour.dll</HintPath>
+    <Reference Include="Mono.Security">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\FC BŘEZEN modded\unstripped_corlib\Mono.Security.dll</HintPath>
     </Reference>
-    <Reference Include="MonoMod.Utils, Version=21.11.1.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoMod.Utils.21.11.1.1\lib\net452\MonoMod.Utils.dll</HintPath>
+    <Reference Include="MonoMod, Version=22.3.23.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoMod.22.3.23.4\lib\net452\MonoMod.exe</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.RuntimeDetour, Version=22.3.23.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoMod.RuntimeDetour.22.3.23.4\lib\net452\MonoMod.RuntimeDetour.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.Utils, Version=22.3.23.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoMod.Utils.22.3.23.4\lib\net452\MonoMod.Utils.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -80,6 +139,102 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AIModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.AIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AndroidJNIModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.AndroidJNIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\FC BŘEZEN modded\unstripped_corlib\UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClothModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.ClothModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DirectorModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.DirectorModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GridModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.GridModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.InputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ScreenCaptureModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.ScreenCaptureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SharedInternalsModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.SharedInternalsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SubsystemsModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.SubsystemsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.TerrainModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TilemapModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.TilemapModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VFXModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.VFXModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VideoModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.VideoModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VRModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.VRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.XRModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Valheim\LIBS\Managed\UnityEngine.XRModule.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Patch.cs" />
@@ -90,8 +245,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <EmbeddedResource Include="AssetsEmbedded\viktorshroom" />
     <EmbeddedResource Include="AssetsEmbedded\Mother.png" />
+    <EmbeddedResource Include="AssetsEmbedded\viktorshroom" />
     <None Include="packages.config" />
     <None Include="README.md" />
   </ItemGroup>
@@ -103,6 +258,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Package\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\..\SteamLibrary\steamapps\common\Valheim\FC BŘEZEN modded\BepInEx\core\0Harmony.dll" />
+    <Analyzer Include="..\..\..\SteamLibrary\steamapps\common\Valheim\FC BŘEZEN modded\BepInEx\core\0Harmony20.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="JotunnPostBuildTaskWin" Condition="'$(OS)' == 'Windows_NT'">
@@ -122,8 +281,8 @@
   </Target>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+      <ErrorText>Tenhle projekt odkazuje na balíčky NuGet, které nejsou v tomhle počítači k dispozici. Když je chcete stáhnout, použijte funkci obnovení balíčků NuGet.  Další informace najdete na adrese http://go.microsoft.com/fwlink/?LinkID=322105. Chybějícím souborem je soubor {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\JotunnLib.2.3.12\build\JotunnLib.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\JotunnLib.2.3.12\build\JotunnLib.props'))" />
+    <Error Condition="!Exists('..\packages\JotunnLib.2.6.2\build\JotunnLib.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\JotunnLib.2.6.2\build\JotunnLib.props'))" />
   </Target>
 </Project>
