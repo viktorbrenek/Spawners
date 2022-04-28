@@ -1,0 +1,16 @@
+{
+  "JungleEle": {
+    "min": 0,
+    "max": 0.5,
+    "groupSizeMin": 1,
+    "groupSizeMax": 1,
+    "groupRadius": 5,
+    "minAltitude": null,
+    "maxAltitude": null,
+    "biome": "black_forest",
+    "biomeArea": "median",
+    "inForest": null,
+    "forestThresholdMin": null,
+    "forestThresholdMax": null
+  }
+}

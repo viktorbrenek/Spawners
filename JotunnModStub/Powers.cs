@@ -17,7 +17,9 @@ namespace Sporelings
             m_name = $"Gwyrn's blessing";
             m_tooltip = $"Tooltip Text";
             float raisevalue = 1.5f;
-            ModifySkillLevel(Skills.SkillType.All, ref raisevalue);
+            ModifySkillLevel(Skills.SkillType.Sneak, ref raisevalue);
+            m_raiseSkillModifier = 1;
+            m_damageModifier = 15;
         }
 
     }

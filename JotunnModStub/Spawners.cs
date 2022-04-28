@@ -7,8 +7,13 @@ using Jotunn.Entities;
 using Jotunn.Managers;
 using Jotunn.Utils;
 using System;
+using System.IO;
+using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
+using Logger = Jotunn.Logger;
+using SimpleJson;
+using static SimpleJson.SimpleJson;
 
 namespace Sporelings
 {
@@ -78,6 +83,17 @@ namespace Sporelings
             }
         }
 
+        // TADY JSEM PŘIDAL TO ČTENÍ CONFIGU
+        /*public static string ReadEmbeddedFile(string embeddedName)
+        {
+            var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(embeddedName);
+            if (stream == null) return null;
+            TextReader tr = new StreamReader(stream);
+            var fileContents = tr.ReadToEnd();
+            return fileContents;
+        }*/
+       
+
         private void LoadStatusEffects()
         {
             ItemManager.Instance.AddStatusEffect(new CustomStatusEffect(ScriptableObject.CreateInstance<GP_Gwyrn>(), false));
@@ -95,6 +111,14 @@ namespace Sporelings
             AddDungDoorSix();
             AddDungDoorSeven();
             AddDungDoorEight();
+            AddDwarfSpawn();
+            AddLadder();
+            AddBowl();
+            AddGateOneWay();
+            
+            AddDungBlinder();
+            AddDungSingle();
+            AddDungTripod();
         }
 
         // TADY SE MUSÍ UDĚLAT JAKOBY PROMĚNÁ PRO VŠECHNY PŘEDMĚTY KTERÝ CHCEŠ PŘIDÁVAT = TYPU CRAFTING/NON CRAFTING 
@@ -112,12 +136,26 @@ namespace Sporelings
             AddDungKeyEight();
             AddCageHammer();
             AddGwyrnsBelt();
+            AddDwarfgun();
+            
         }
 
         private void LoadPrefabs()
         {
             var blakenpc = _assetBundle.LoadAsset<GameObject>("Blake");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(blakenpc, true));
+
+            var nomadnpc = _assetBundle.LoadAsset<GameObject>("Dwarf");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(nomadnpc, true));
+
+            var nomadsnpc = _assetBundle.LoadAsset<GameObject>("DwarfFlamer");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(nomadsnpc, true));
+
+            var jungletree = _assetBundle.LoadAsset<GameObject>("JungleEle");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(jungletree, true));
+
+            var dfort = _assetBundle.LoadAsset<GameObject>("Fort");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(dfort, true));
 
             var drakenpc = _assetBundle.LoadAsset<GameObject>("Drake");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(drakenpc, true));
@@ -132,6 +170,16 @@ namespace Sporelings
             // BOSSES
             var bossone = _assetBundle.LoadAsset<GameObject>("BossA");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(bossone, true));
+
+
+            // rostliny
+
+            /*CustomVegetation Plants = new CustomVegetation(Jungletree, false,
+                new VegetationConfig
+                {
+                    Biome = Heightmap.Biome.Meadows,
+                    BlockCheck = true
+                });*/
         }
 
         #region Items
@@ -933,6 +981,302 @@ namespace Sporelings
         }
 
 
+        private void AddDwarfSpawn()
+        {
+            // ReSharper disable once StringLiteralTypo
+            var prefab = _assetBundle.LoadAsset<GameObject>("Dwarf_spawner");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} prefab == null : {prefab == null}"); // This is null?
+#endif
+
+            // ReSharper disable twice IdentifierTypo
+            var dwspawn = new CustomPiece(prefab,
+              false,
+              new PieceConfig
+              {
+                  PieceTable = "_CageHammerPieceTable"
+                ,
+                  CraftingStation = ""
+                ,
+                  Enabled = true
+                ,
+                  Requirements = new[]
+                {
+            new RequirementConfig
+            {
+              Item = "Iron"
+              , Amount = 150
+              , Recover = false
+            },
+            new RequirementConfig
+            {
+              Item = "FineWood"
+              , Amount = 20
+              , Recover = false
+            }
+                }
+              });
+
+            PieceManager.Instance.AddPiece(dwspawn);
+
+        }
+
+
+        private void AddLadder()
+        {
+            // ReSharper disable once StringLiteralTypo
+            var prefab = _assetBundle.LoadAsset<GameObject>("LadderUp");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} prefab == null : {prefab == null}"); // This is null?
+#endif
+
+            // ReSharper disable twice IdentifierTypo
+            var ladd = new CustomPiece(prefab,
+              false,
+              new PieceConfig
+              {
+                  PieceTable = "_CageHammerPieceTable"
+                ,
+                  CraftingStation = ""
+                ,
+                  Enabled = true
+                ,
+                  Requirements = new[]
+                {
+            new RequirementConfig
+            {
+              Item = "Iron"
+              , Amount = 2
+              , Recover = false
+            },
+            new RequirementConfig
+            {
+              Item = "FineWood"
+              , Amount = 20
+              , Recover = false
+            }
+                }
+              });
+
+            PieceManager.Instance.AddPiece(ladd);
+
+        }
+
+        private void AddBowl()
+        {
+            // ReSharper disable once StringLiteralTypo
+            var prefab = _assetBundle.LoadAsset<GameObject>("Bowl");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} prefab == null : {prefab == null}"); // This is null?
+#endif
+
+            // ReSharper disable twice IdentifierTypo
+            var bowlrena = new CustomPiece(prefab,
+              false,
+              new PieceConfig
+              {
+                  PieceTable = "_CageHammerPieceTable"
+                ,
+                  CraftingStation = ""
+                ,
+                  Enabled = true
+                ,
+                  Requirements = new[]
+                {
+            new RequirementConfig
+            {
+              Item = "Iron"
+              , Amount = 999
+              , Recover = false
+            },
+            new RequirementConfig
+            {
+              Item = "FineWood"
+              , Amount = 20
+              , Recover = false
+            }
+                }
+              });
+
+            PieceManager.Instance.AddPiece(bowlrena);
+
+        }
+
+        private void AddGateOneWay()
+        {
+            // ReSharper disable once StringLiteralTypo
+            var prefab = _assetBundle.LoadAsset<GameObject>("DungeonDoors");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} prefab == null : {prefab == null}"); // This is null?
+#endif
+
+            // ReSharper disable twice IdentifierTypo
+            var oneway = new CustomPiece(prefab,
+              false,
+              new PieceConfig
+              {
+                  PieceTable = "_CageHammerPieceTable"
+                ,
+                  CraftingStation = ""
+                ,
+                  Enabled = true
+                ,
+                  Requirements = new[]
+                {
+            new RequirementConfig
+            {
+              Item = "Iron"
+              , Amount = 2
+              , Recover = false
+            },
+            new RequirementConfig
+            {
+              Item = "FineWood"
+              , Amount = 20
+              , Recover = false
+            }
+                }
+              });
+
+            PieceManager.Instance.AddPiece(oneway);
+
+        }
+
+        
+
+        private void AddDungBlinder()
+        {
+            // ReSharper disable once StringLiteralTypo
+            var prefab = _assetBundle.LoadAsset<GameObject>("DungeonBlinder");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} prefab == null : {prefab == null}"); // This is null?
+#endif
+
+            // ReSharper disable twice IdentifierTypo
+            var dblind = new CustomPiece(prefab,
+              false,
+              new PieceConfig
+              {
+                  PieceTable = "_CageHammerPieceTable"
+                ,
+                  CraftingStation = ""
+                ,
+                  Enabled = true
+                ,
+                  Requirements = new[]
+                {
+            new RequirementConfig
+            {
+              Item = "Iron"
+              , Amount = 999
+              , Recover = false
+            },
+            new RequirementConfig
+            {
+              Item = "FineWood"
+              , Amount = 20
+              , Recover = false
+            }
+                }
+              });
+
+            PieceManager.Instance.AddPiece(dblind);
+
+        }
+
+        private void AddDungSingle()
+        {
+            // ReSharper disable once StringLiteralTypo
+            var prefab = _assetBundle.LoadAsset<GameObject>("DungeonSingle");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} prefab == null : {prefab == null}"); // This is null?
+#endif
+
+            // ReSharper disable twice IdentifierTypo
+            var dsingle = new CustomPiece(prefab,
+              false,
+              new PieceConfig
+              {
+                  PieceTable = "_CageHammerPieceTable"
+                ,
+                  CraftingStation = ""
+                ,
+                  Enabled = true
+                ,
+                  Requirements = new[]
+                {
+            new RequirementConfig
+            {
+              Item = "Iron"
+              , Amount = 999
+              , Recover = false
+            },
+            new RequirementConfig
+            {
+              Item = "FineWood"
+              , Amount = 20
+              , Recover = false
+            }
+                }
+              });
+
+            PieceManager.Instance.AddPiece(dsingle);
+
+        }
+
+        private void AddDungTripod()
+        {
+            // ReSharper disable once StringLiteralTypo
+            var prefab = _assetBundle.LoadAsset<GameObject>("DungeonTripod");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} prefab == null : {prefab == null}"); // This is null?
+#endif
+
+            // ReSharper disable twice IdentifierTypo
+            var dtri = new CustomPiece(prefab,
+              false,
+              new PieceConfig
+              {
+                  PieceTable = "_CageHammerPieceTable"
+                ,
+                  CraftingStation = ""
+                ,
+                  Enabled = true
+                ,
+                  Requirements = new[]
+                {
+            new RequirementConfig
+            {
+              Item = "Iron"
+              , Amount = 999
+              , Recover = false
+            },
+            new RequirementConfig
+            {
+              Item = "FineWood"
+              , Amount = 20
+              , Recover = false
+            }
+                }
+              });
+
+            PieceManager.Instance.AddPiece(dtri);
+
+        }
 
 
 
@@ -946,11 +1290,23 @@ namespace Sporelings
 
 
 
+      
 
 
 
+        private void AddDwarfgun()
+       {
+           // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
+           // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+           var itemPrefab = _assetBundle.LoadAsset<GameObject>("Dwarfgun");
+#if DEBUG
+           // ReSharper disable once StringLiteralTypo
+           Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+           ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false)); // Non Craftable version
+       }
 
-
+        
 
 
 

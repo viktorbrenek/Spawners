@@ -1,0 +1,15 @@
+{
+  "JungleEle": {
+    "shader": "Custom/Vegetation",
+    "texture": "Garlic_diffuse",
+    "material": {
+      "glossiness": 0.1,
+      "cutoff": 0,
+      "height": 1,
+      "swaySpeed": 30,
+      "swayDistance": 0.23,
+      "rippleSpeed": 100,
+      "pushDistance": 0.1
+    }
+  }
+}

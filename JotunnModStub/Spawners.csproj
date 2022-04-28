@@ -237,6 +237,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Plants.cs" />
     <Compile Include="Patch.cs" />
     <Compile Include="Powers.cs" />
     <Compile Include="Properties\IgnoreAccessModifiers.cs" />
@@ -247,6 +248,9 @@
     <None Include="app.config" />
     <EmbeddedResource Include="AssetsEmbedded\Mother.png" />
     <EmbeddedResource Include="AssetsEmbedded\viktorshroom" />
+    <None Include="Configs\plantsLocations.json" />
+    <None Include="Configs\plants.json" />
+    <None Include="Configs\plantsShaderConfig.json" />
     <None Include="packages.config" />
     <None Include="README.md" />
   </ItemGroup>
