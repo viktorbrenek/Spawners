@@ -103,6 +103,7 @@ namespace Sporelings
         // TADY SE MUSÍ UDĚLAT JAKOBY PROMĚNÁ PRO VŠECHNY PŘEDMĚTY KTERÝ CHCEŠ PŘIDÁVAT = TYPU BUILDING 
         private void LoadPieces()
         {
+            //dung piece
             AddDungDoorOne();
             AddDungDoorTwo();
             AddDungDoorThree();
@@ -115,10 +116,21 @@ namespace Sporelings
             AddLadder();
             AddBowl();
             AddGateOneWay();
-            
             AddDungBlinder();
             AddDungSingle();
             AddDungTripod();
+            // TOWN piece 
+            AddFort();
+            AddTownHouseOne();
+            AddTownHouseTwo();
+            AddTownHouseThree();
+            AddTownHouseFour(); 
+            AddTownHouseSix();
+            AddTownHouseSeven();
+            // DESERT piece
+            AddTownDesertOne();
+            AddTownDesertTwo();
+            AddTownDesertThree();
         }
 
         // TADY SE MUSÍ UDĚLAT JAKOBY PROMĚNÁ PRO VŠECHNY PŘEDMĚTY KTERÝ CHCEŠ PŘIDÁVAT = TYPU CRAFTING/NON CRAFTING 
@@ -126,6 +138,7 @@ namespace Sporelings
 
         private void LoadItems()
         {
+            //dung items
             AddDungKeyOne();
             AddDungKeyTwo();
             AddDungKeyThree();
@@ -135,13 +148,48 @@ namespace Sporelings
             AddDungKeySeven();
             AddDungKeyEight();
             AddCageHammer();
+
+            //guild items
             AddGwyrnsBelt();
+            AddWerdiBelt();
+            //npc items
             AddDwarfgun();
             
         }
 
         private void LoadPrefabs()
         {
+            // OCEAN
+
+            var chaluone = _assetBundle.LoadAsset<GameObject>("ChaluhaOne");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(chaluone, true));
+
+            var chalutwo = _assetBundle.LoadAsset<GameObject>("ChaluhaTwo");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(chalutwo, true));
+
+            var chaluthree = _assetBundle.LoadAsset<GameObject>("ChaluhaThree");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(chaluthree, true));
+
+            var chalufour = _assetBundle.LoadAsset<GameObject>("Algas");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(chalufour, true));
+
+            var chalufive = _assetBundle.LoadAsset<GameObject>("ChaluhaFour");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(chalufive, true));
+
+            var turtleg = _assetBundle.LoadAsset<GameObject>("Turtle");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(turtleg, true));
+
+            var fishone = _assetBundle.LoadAsset<GameObject>("FishOne");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(fishone, true));
+
+            var fishthree = _assetBundle.LoadAsset<GameObject>("FishThree");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(fishthree, true));
+
+            //NPC
+
+            var drakenpc = _assetBundle.LoadAsset<GameObject>("Drake");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(drakenpc, true));
+
             var blakenpc = _assetBundle.LoadAsset<GameObject>("Blake");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(blakenpc, true));
 
@@ -151,20 +199,24 @@ namespace Sporelings
             var nomadsnpc = _assetBundle.LoadAsset<GameObject>("DwarfFlamer");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(nomadsnpc, true));
 
-            var jungletree = _assetBundle.LoadAsset<GameObject>("JungleEle");
-            PrefabManager.Instance.AddPrefab(new CustomPrefab(jungletree, true));
-
-            var dfort = _assetBundle.LoadAsset<GameObject>("Fort");
-            PrefabManager.Instance.AddPrefab(new CustomPrefab(dfort, true));
-
-            var drakenpc = _assetBundle.LoadAsset<GameObject>("Drake");
-            PrefabManager.Instance.AddPrefab(new CustomPrefab(drakenpc, true));
+            //Guild
 
             var AddGuildHouse = _assetBundle.LoadAsset<GameObject>("VillageHouseOne");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(AddGuildHouse, true));
 
             var AddIslandDung = _assetBundle.LoadAsset<GameObject>("IslandDungeon");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(AddIslandDung, true));
+
+            //Nature prefabs 
+
+            var Addpazruda = _assetBundle.LoadAsset<GameObject>("Pazourek");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(Addpazruda, true));
+
+            var jungletree = _assetBundle.LoadAsset<GameObject>("JungleEle");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(jungletree, true));
+
+            var rockoone = _assetBundle.LoadAsset<GameObject>("RockOne");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(rockoone, true));
 
 
             // BOSSES
@@ -180,6 +232,159 @@ namespace Sporelings
                     Biome = Heightmap.Biome.Meadows,
                     BlockCheck = true
                 });*/
+
+            CustomVegetation Plants = new CustomVegetation(jungletree, false,
+                new VegetationConfig
+                {
+                    Biome = Heightmap.Biome.Meadows,
+                    Min = 1,
+                    Max = 5,
+                    GroupSizeMin = 1,
+                    GroupSizeMax = 2,
+                    GroupRadius = 100,
+                    GroundOffset = -1,
+                    BiomeArea = Heightmap.BiomeArea.Median,
+                    MinAltitude = 2
+                }); ;
+            ZoneManager.Instance.AddCustomVegetation(Plants);
+
+            CustomVegetation Chaluhy = new CustomVegetation(chaluone, false,
+                new VegetationConfig
+                {
+                    Biome = Heightmap.Biome.Ocean,
+                    Min = 3,
+                    Max = 10,
+                    GroupSizeMin = 3,
+                    GroupSizeMax = 7,
+                    GroupRadius = 40,
+                    ScaleMin = 1,
+                    ScaleMax = 2
+                });
+            ZoneManager.Instance.AddCustomVegetation(Chaluhy);
+
+            CustomVegetation Chaluhatwo = new CustomVegetation(chalutwo, false,
+                new VegetationConfig
+                {
+                    Biome = Heightmap.Biome.Ocean,
+                    Min = 1,
+                    Max = 5,
+                    GroupSizeMin = 1,
+                    GroupSizeMax = 2,
+                    GroupRadius = 40,
+                    ScaleMin = 1,
+                    ScaleMax = 2
+                });
+            ZoneManager.Instance.AddCustomVegetation(Chaluhatwo);
+
+            CustomVegetation Oceturtle = new CustomVegetation(turtleg, false,
+                new VegetationConfig
+                {
+                    Biome = Heightmap.Biome.Ocean,
+                    Min = 1,
+                    Max = 5,
+                    GroupSizeMin = 1,
+                    GroupSizeMax = 2,
+                    GroupRadius = 70
+                });
+            ZoneManager.Instance.AddCustomVegetation(Oceturtle);
+
+            CustomVegetation Chaluhathree = new CustomVegetation(chaluthree, false,
+                new VegetationConfig
+                {
+                    Biome = Heightmap.Biome.Ocean,
+                    Min = 1,
+                    Max = 3,
+                    GroupSizeMin = 1,
+                    GroupSizeMax = 3,
+                    GroupRadius = 40,
+                    ScaleMin = 1,
+                    ScaleMax = 2
+                });
+            ZoneManager.Instance.AddCustomVegetation(Chaluhathree);
+
+            CustomVegetation RybaOne = new CustomVegetation(fishone, false,
+                new VegetationConfig
+                {
+                    Biome = Heightmap.Biome.Ocean,
+                    Min = 1,
+                    Max = 3,
+                    GroupSizeMin = 1,
+                    GroupSizeMax = 3,
+                    GroupRadius = 40,
+                    ScaleMin = 1,
+                    ScaleMax = 2
+                });
+            ZoneManager.Instance.AddCustomVegetation(RybaOne);
+
+            CustomVegetation RybaThree = new CustomVegetation(fishthree, false,
+                new VegetationConfig
+                {
+                    Biome = Heightmap.Biome.Ocean,
+                    Min = 1,
+                    Max = 3,
+                    GroupSizeMin = 1,
+                    GroupSizeMax = 3,
+                    GroupRadius = 40,
+                    ScaleMin = 1,
+                    ScaleMax = 2
+                });
+            ZoneManager.Instance.AddCustomVegetation(RybaThree);
+
+            CustomVegetation Chaluhafour = new CustomVegetation(chalufour, false,
+                new VegetationConfig
+                {
+                    Biome = Heightmap.Biome.Ocean,
+                    Min = 1,
+                    Max = 3,
+                    GroupSizeMin = 1,
+                    GroupSizeMax = 3,
+                    GroupRadius = 40,
+                    ScaleMin = 1,
+                    ScaleMax = 2
+                });
+            ZoneManager.Instance.AddCustomVegetation(Chaluhafour);
+
+            CustomVegetation Chaluhafive = new CustomVegetation(chalufive, false,
+                new VegetationConfig
+                {
+                    Biome = Heightmap.Biome.Ocean,
+                    Min = 2,
+                    Max = 7,
+                    GroupSizeMin = 2,
+                    GroupSizeMax = 6,
+                    GroupRadius = 50,
+                    ScaleMin = 1,
+                    ScaleMax = 2
+                });
+            ZoneManager.Instance.AddCustomVegetation(Chaluhafive);
+
+            CustomVegetation RockOne = new CustomVegetation(rockoone, false,
+                new VegetationConfig
+                {
+                    Biome = Heightmap.Biome.Ocean,
+                    Min = 1,
+                    Max = 3,
+                    GroupSizeMin = 1,
+                    GroupSizeMax = 3,
+                    GroupRadius = 50,
+                    ScaleMin = 1,
+                    ScaleMax = 2
+                });
+            ZoneManager.Instance.AddCustomVegetation(RockOne);
+
+            CustomVegetation Pazruda = new CustomVegetation(Addpazruda, false,
+                new VegetationConfig
+                {
+                    Biome = Heightmap.Biome.Ocean,
+                    Min = 1,
+                    Max = 5,
+                    GroupSizeMin = 1,
+                    GroupSizeMax = 2,
+                    GroupRadius = 40,
+                    ScaleMin = 1,
+                    ScaleMax = 2
+                });
+            ZoneManager.Instance.AddCustomVegetation(Pazruda);
         }
 
         #region Items
@@ -627,9 +832,51 @@ namespace Sporelings
         }
             }));
         }
+        
 
+        private void AddWerdiBelt()
+        {
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("GuildbeltB");
 
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
 
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+            {
+                // ReSharper disable once StringLiteralTypo
+                Name = "Werdi clan belt"
+              ,
+                Amount = 1
+              ,
+                CraftingStation = "Blake"
+              ,
+                Requirements = new[]
+              {
+          new RequirementConfig
+          {
+            Item = "Crystal"
+            , Amount = 20
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "TrophySGolem"
+            , Amount = 2
+            , AmountPerLevel = 3
+          }
+
+          , new RequirementConfig
+          {
+           Item = "Silver"
+             , Amount = 10
+             , AmountPerLevel = 2
+           }
+
+        }
+            }));
+        }
 
 
 
@@ -1278,6 +1525,425 @@ namespace Sporelings
 
         }
 
+        private void AddFort()
+        {
+            // ReSharper disable once StringLiteralTypo
+            var prefab = _assetBundle.LoadAsset<GameObject>("Fort");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} prefab == null : {prefab == null}"); // This is null?
+#endif
+
+            // ReSharper disable twice IdentifierTypo
+            var dfort = new CustomPiece(prefab,
+              false,
+              new PieceConfig
+              {
+                  PieceTable = "_CageHammerPieceTable"
+                ,
+                  CraftingStation = ""
+                ,
+                  Enabled = true
+                ,
+                  Requirements = new[]
+                {
+            new RequirementConfig
+            {
+              Item = "Iron"
+              , Amount = 999
+              , Recover = false
+            },
+            new RequirementConfig
+            {
+              Item = "FineWood"
+              , Amount = 20
+              , Recover = false
+            }
+                }
+              });
+
+            PieceManager.Instance.AddPiece(dfort);
+
+        }
+
+        private void AddTownHouseOne()
+        {
+            // ReSharper disable once StringLiteralTypo
+            var prefab = _assetBundle.LoadAsset<GameObject>("TownHouseOne");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} prefab == null : {prefab == null}"); // This is null?
+#endif
+
+            // ReSharper disable twice IdentifierTypo
+            var dhouseone = new CustomPiece(prefab,
+              false,
+              new PieceConfig
+              {
+                  PieceTable = "_CageHammerPieceTable"
+                ,
+                  CraftingStation = ""
+                ,
+                  Enabled = true
+                ,
+                  Requirements = new[]
+                {
+            new RequirementConfig
+            {
+              Item = "Iron"
+              , Amount = 999
+              , Recover = false
+            },
+            new RequirementConfig
+            {
+              Item = "FineWood"
+              , Amount = 20
+              , Recover = false
+            }
+                }
+              });
+
+            PieceManager.Instance.AddPiece(dhouseone);
+
+        }
+
+        private void AddTownHouseTwo()
+        {
+            // ReSharper disable once StringLiteralTypo
+            var prefab = _assetBundle.LoadAsset<GameObject>("TownHouseTwo");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} prefab == null : {prefab == null}"); // This is null?
+#endif
+
+            // ReSharper disable twice IdentifierTypo
+            var dhousetwo = new CustomPiece(prefab,
+              false,
+              new PieceConfig
+              {
+                  PieceTable = "_CageHammerPieceTable"
+                ,
+                  CraftingStation = ""
+                ,
+                  Enabled = true
+                ,
+                  Requirements = new[]
+                {
+            new RequirementConfig
+            {
+              Item = "Iron"
+              , Amount = 999
+              , Recover = false
+            },
+            new RequirementConfig
+            {
+              Item = "FineWood"
+              , Amount = 20
+              , Recover = false
+            }
+                }
+              });
+
+            PieceManager.Instance.AddPiece(dhousetwo);
+
+        }
+
+        private void AddTownHouseThree()
+        {
+            // ReSharper disable once StringLiteralTypo
+            var prefab = _assetBundle.LoadAsset<GameObject>("TownHouseThree");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} prefab == null : {prefab == null}"); // This is null?
+#endif
+
+            // ReSharper disable twice IdentifierTypo
+            var dhousethree = new CustomPiece(prefab,
+              false,
+              new PieceConfig
+              {
+                  PieceTable = "_CageHammerPieceTable"
+                ,
+                  CraftingStation = ""
+                ,
+                  Enabled = true
+                ,
+                  Requirements = new[]
+                {
+            new RequirementConfig
+            {
+              Item = "Iron"
+              , Amount = 999
+              , Recover = false
+            },
+            new RequirementConfig
+            {
+              Item = "FineWood"
+              , Amount = 20
+              , Recover = false
+            }
+                }
+              });
+
+            PieceManager.Instance.AddPiece(dhousethree);
+
+        }
+
+        private void AddTownHouseFour()
+        {
+            // ReSharper disable once StringLiteralTypo
+            var prefab = _assetBundle.LoadAsset<GameObject>("TownHouseFour");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} prefab == null : {prefab == null}"); // This is null?
+#endif
+
+            // ReSharper disable twice IdentifierTypo
+            var dhousefour = new CustomPiece(prefab,
+              false,
+              new PieceConfig
+              {
+                  PieceTable = "_CageHammerPieceTable"
+                ,
+                  CraftingStation = ""
+                ,
+                  Enabled = true
+                ,
+                  Requirements = new[]
+                {
+            new RequirementConfig
+            {
+              Item = "Iron"
+              , Amount = 999
+              , Recover = false
+            },
+            new RequirementConfig
+            {
+              Item = "FineWood"
+              , Amount = 20
+              , Recover = false
+            }
+                }
+              });
+
+            PieceManager.Instance.AddPiece(dhousefour);
+
+        }
+
+        private void AddTownHouseSix()
+        {
+            // ReSharper disable once StringLiteralTypo
+            var prefab = _assetBundle.LoadAsset<GameObject>("TownHouseSix");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} prefab == null : {prefab == null}"); // This is null?
+#endif
+
+            // ReSharper disable twice IdentifierTypo
+            var dhousesix = new CustomPiece(prefab,
+              false,
+              new PieceConfig
+              {
+                  PieceTable = "_CageHammerPieceTable"
+                ,
+                  CraftingStation = ""
+                ,
+                  Enabled = true
+                ,
+                  Requirements = new[]
+                {
+            new RequirementConfig
+            {
+              Item = "Iron"
+              , Amount = 999
+              , Recover = false
+            },
+            new RequirementConfig
+            {
+              Item = "FineWood"
+              , Amount = 20
+              , Recover = false
+            }
+                }
+              });
+
+            PieceManager.Instance.AddPiece(dhousesix);
+
+        }
+
+        private void AddTownHouseSeven()
+        {
+            // ReSharper disable once StringLiteralTypo
+            var prefab = _assetBundle.LoadAsset<GameObject>("TownHouseSeven");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} prefab == null : {prefab == null}"); // This is null?
+#endif
+
+            // ReSharper disable twice IdentifierTypo
+            var dhouseseven = new CustomPiece(prefab,
+              false,
+              new PieceConfig
+              {
+                  PieceTable = "_CageHammerPieceTable"
+                ,
+                  CraftingStation = ""
+                ,
+                  Enabled = true
+                ,
+                  Requirements = new[]
+                {
+            new RequirementConfig
+            {
+              Item = "Iron"
+              , Amount = 999
+              , Recover = false
+            },
+            new RequirementConfig
+            {
+              Item = "FineWood"
+              , Amount = 20
+              , Recover = false
+            }
+                }
+              });
+
+            PieceManager.Instance.AddPiece(dhouseseven);
+
+        }
+
+        private void AddTownDesertOne()
+        {
+            // ReSharper disable once StringLiteralTypo
+            var prefab = _assetBundle.LoadAsset<GameObject>("DesertHouseOne");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} prefab == null : {prefab == null}"); // This is null?
+#endif
+
+            // ReSharper disable twice IdentifierTypo
+            var ddeseone = new CustomPiece(prefab,
+              false,
+              new PieceConfig
+              {
+                  PieceTable = "_CageHammerPieceTable"
+                ,
+                  CraftingStation = ""
+                ,
+                  Enabled = true
+                ,
+                  Requirements = new[]
+                {
+            new RequirementConfig
+            {
+              Item = "Iron"
+              , Amount = 999
+              , Recover = false
+            },
+            new RequirementConfig
+            {
+              Item = "FineWood"
+              , Amount = 20
+              , Recover = false
+            }
+                }
+              });
+
+            PieceManager.Instance.AddPiece(ddeseone);
+
+        }
+
+        private void AddTownDesertTwo()
+        {
+            // ReSharper disable once StringLiteralTypo
+            var prefab = _assetBundle.LoadAsset<GameObject>("DesertHouseTwo");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} prefab == null : {prefab == null}"); // This is null?
+#endif
+
+            // ReSharper disable twice IdentifierTypo
+            var ddesetwo = new CustomPiece(prefab,
+              false,
+              new PieceConfig
+              {
+                  PieceTable = "_CageHammerPieceTable"
+                ,
+                  CraftingStation = ""
+                ,
+                  Enabled = true
+                ,
+                  Requirements = new[]
+                {
+            new RequirementConfig
+            {
+              Item = "Iron"
+              , Amount = 999
+              , Recover = false
+            },
+            new RequirementConfig
+            {
+              Item = "FineWood"
+              , Amount = 20
+              , Recover = false
+            }
+                }
+              });
+
+            PieceManager.Instance.AddPiece(ddesetwo);
+
+        }
+
+        private void AddTownDesertThree()
+        {
+            // ReSharper disable once StringLiteralTypo
+            var prefab = _assetBundle.LoadAsset<GameObject>("DesertHouseThree");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} prefab == null : {prefab == null}"); // This is null?
+#endif
+
+            // ReSharper disable twice IdentifierTypo
+            var ddesethree = new CustomPiece(prefab,
+              false,
+              new PieceConfig
+              {
+                  PieceTable = "_CageHammerPieceTable"
+                ,
+                  CraftingStation = ""
+                ,
+                  Enabled = true
+                ,
+                  Requirements = new[]
+                {
+            new RequirementConfig
+            {
+              Item = "Iron"
+              , Amount = 999
+              , Recover = false
+            },
+            new RequirementConfig
+            {
+              Item = "FineWood"
+              , Amount = 20
+              , Recover = false
+            }
+                }
+              });
+
+            PieceManager.Instance.AddPiece(ddesethree);
+
+        }
 
 
 
@@ -1288,9 +1954,6 @@ namespace Sporelings
 
 
 
-
-
-      
 
 
 
