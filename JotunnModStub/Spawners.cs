@@ -239,31 +239,31 @@ namespace Sporelings
 
             //NPC
 
-            var drakenpc = _assetBundle.LoadAsset<GameObject>("Drake");
+            var drakenpc = _assetBundle.LoadAsset<GameObject>("VB_Drake");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(drakenpc, true));
 
-            var blakenpc = _assetBundle.LoadAsset<GameObject>("Blake");
+            var blakenpc = _assetBundle.LoadAsset<GameObject>("VB_Blake");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(blakenpc, true));
 
-            var grugnpc = _assetBundle.LoadAsset<GameObject>("Grug");
+            var grugnpc = _assetBundle.LoadAsset<GameObject>("VB_Grug");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(grugnpc, true));
 
-            var shruknpc = _assetBundle.LoadAsset<GameObject>("Shruk");
+            var shruknpc = _assetBundle.LoadAsset<GameObject>("VB_Shruk");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(shruknpc, true));
 
-            var nomadnpc = _assetBundle.LoadAsset<GameObject>("Dwarf");
+            var nomadnpc = _assetBundle.LoadAsset<GameObject>("VB_Dwarf");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(nomadnpc, true));
 
-            var nomadsnpc = _assetBundle.LoadAsset<GameObject>("DwarfFlamer");
+            var nomadsnpc = _assetBundle.LoadAsset<GameObject>("VB_DwarfFlamer");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(nomadsnpc, true));
 
-            var vrack = _assetBundle.LoadAsset<GameObject>("Vracka");
+            var vrack = _assetBundle.LoadAsset<GameObject>("VB_Vracka");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(vrack, true));
 
-            var dwsumA = _assetBundle.LoadAsset<GameObject>("SummAA");
+            var dwsumA = _assetBundle.LoadAsset<GameObject>("VB_SummAA");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(dwsumA, true));
 
-            var dwsumB = _assetBundle.LoadAsset<GameObject>("SummAB");
+            var dwsumB = _assetBundle.LoadAsset<GameObject>("VB_SummAB");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(dwsumB, true));
 
             //Guild
@@ -271,19 +271,19 @@ namespace Sporelings
             //var AddGuildHouse = _assetBundle.LoadAsset<GameObject>("VillageHouseOne");
             //PrefabManager.Instance.AddPrefab(new CustomPrefab(AddGuildHouse, true));
 
-            var AddIslandDung = _assetBundle.LoadAsset<GameObject>("IslandDungeon");
+            var AddIslandDung = _assetBundle.LoadAsset<GameObject>("VB_IslandDungeon");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(AddIslandDung, true));
 
-            var AddInfostone = _assetBundle.LoadAsset<GameObject>("InfoStone");
+            var AddInfostone = _assetBundle.LoadAsset<GameObject>("VB_InfoStone");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(AddInfostone, true));
 
-            var AddWelcstone = _assetBundle.LoadAsset<GameObject>("WelcomeStone");
+            var AddWelcstone = _assetBundle.LoadAsset<GameObject>("VB_WelcomeStone");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(AddWelcstone, true));
 
-            var Addquesstone = _assetBundle.LoadAsset<GameObject>("QuestStone");
+            var Addquesstone = _assetBundle.LoadAsset<GameObject>("VB_QuestStone");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(Addquesstone, true));
 
-            var sinquest = _assetBundle.LoadAsset<GameObject>("SignQuest");
+            var sinquest = _assetBundle.LoadAsset<GameObject>("VB_SignQuest");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(sinquest, true));
 
             //Nature prefabs 
@@ -302,32 +302,32 @@ namespace Sporelings
 
 
             // BOSSES
-            var bossone = _assetBundle.LoadAsset<GameObject>("BossA");
+            var bossone = _assetBundle.LoadAsset<GameObject>("VB_BossA");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(bossone, true));
 
-            var bosstwo = _assetBundle.LoadAsset<GameObject>("BossB");
+            var bosstwo = _assetBundle.LoadAsset<GameObject>("VB_BossB");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(bosstwo, true));
 
-            var bossonealt = _assetBundle.LoadAsset<GameObject>("BossAAltar");
+            var bossonealt = _assetBundle.LoadAsset<GameObject>("VB_BossAAltar");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(bossonealt, true));
 
-            var bossonestn = _assetBundle.LoadAsset<GameObject>("BossStone_A");
+            var bossonestn = _assetBundle.LoadAsset<GameObject>("VB_BossStone_A");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(bossonestn, true));
 
-            var bosstwoalt = _assetBundle.LoadAsset<GameObject>("BossBAltar");
+            var bosstwoalt = _assetBundle.LoadAsset<GameObject>("VB_BossBAltar");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(bosstwoalt, true));
 
-            var bosstwostn = _assetBundle.LoadAsset<GameObject>("BossStone_B");
+            var bosstwostn = _assetBundle.LoadAsset<GameObject>("VB_BossStone_B");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(bosstwostn, true));
 
-            var lightAOE = _assetBundle.LoadAsset<GameObject>("lightningAOE 1");
+            var lightAOE = _assetBundle.LoadAsset<GameObject>("VB_lightningAOE 1");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(lightAOE, true));
 
             // LOXES
-            var loxone = _assetBundle.LoadAsset<GameObject>("Geju");
+            var loxone = _assetBundle.LoadAsset<GameObject>("VB_Geju");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(loxone, true));
 
-            var loxtwo = _assetBundle.LoadAsset<GameObject>("Bibzu");
+            var loxtwo = _assetBundle.LoadAsset<GameObject>("VB_Bibzu");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(loxtwo, true));
 
             // Spawners
@@ -535,7 +535,7 @@ namespace Sporelings
 
         private void AddDungKeyOne()
         {
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("DungeonKeyA");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_DungeonKeyA");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -549,7 +549,7 @@ namespace Sporelings
               ,
                 Amount = 1
               ,
-                CraftingStation = "Blake"
+                CraftingStation = "VB_Blake"
               ,
                 Requirements = new[]
               {
@@ -561,7 +561,7 @@ namespace Sporelings
           }
           , new RequirementConfig
           {
-            Item = "TimeGear"
+            Item = "VB_TimeGear"
             , Amount = 250
             , AmountPerLevel = 1
           }
@@ -579,7 +579,7 @@ namespace Sporelings
 
         private void AddDungKeyTwo()
         {
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("DungeonKeyB");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_DungeonKeyB");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -593,7 +593,7 @@ namespace Sporelings
               ,
                 Amount = 1
               ,
-                CraftingStation = "Blake"
+                CraftingStation = "VB_Blake"
               ,
                 Requirements = new[]
               {
@@ -605,7 +605,7 @@ namespace Sporelings
           }
           , new RequirementConfig
           {
-            Item = "TimeGear"
+            Item = "VB_TimeGear"
             , Amount = 444
             , AmountPerLevel = 1
           }
@@ -623,7 +623,7 @@ namespace Sporelings
 
         private void AddDungKeyThree()
         {
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("DungeonKeyC");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_DungeonKeyC");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -637,7 +637,7 @@ namespace Sporelings
               ,
                 Amount = 1
               ,
-                CraftingStation = "Blake"
+                CraftingStation = "VB_Blake"
               ,
                 Requirements = new[]
               {
@@ -649,7 +649,7 @@ namespace Sporelings
           }
           , new RequirementConfig
           {
-            Item = "TimeGear"
+            Item = "VB_TimeGear"
             , Amount = 800
             , AmountPerLevel = 1
           }
@@ -667,7 +667,7 @@ namespace Sporelings
 
         private void AddDungKeyFour()
         {
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("DungeonKeyD");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_DungeonKeyD");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -681,7 +681,7 @@ namespace Sporelings
               ,
                 Amount = 1
               ,
-                CraftingStation = "Blake"
+                CraftingStation = "VB_Blake"
               ,
                 Requirements = new[]
               {
@@ -693,7 +693,7 @@ namespace Sporelings
           }
           , new RequirementConfig
           {
-            Item = "TimeGear"
+            Item = "VB_TimeGear"
             , Amount = 1111
             , AmountPerLevel = 1
           }
@@ -711,7 +711,7 @@ namespace Sporelings
 
         private void AddDungKeyFive()
         {
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("DungeonKeyE");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_DungeonKeyE");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -725,7 +725,7 @@ namespace Sporelings
               ,
                 Amount = 1
               ,
-                CraftingStation = "Blake"
+                CraftingStation = "VB_Blake"
               ,
                 Requirements = new[]
               {
@@ -737,7 +737,7 @@ namespace Sporelings
           }
           , new RequirementConfig
           {
-            Item = "TimeGear"
+            Item = "VB_TimeGear"
             , Amount = 1500
             , AmountPerLevel = 1
           }
@@ -755,7 +755,7 @@ namespace Sporelings
 
         private void AddDungKeySix()
         {
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("DungeonKeyF");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_DungeonKeyF");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -769,7 +769,7 @@ namespace Sporelings
               ,
                 Amount = 1
               ,
-                CraftingStation = "Blake"
+                CraftingStation = "VB_Blake"
               ,
                 Requirements = new[]
               {
@@ -781,7 +781,7 @@ namespace Sporelings
           }
           , new RequirementConfig
           {
-            Item = "TimeGear"
+            Item = "VB_TimeGear"
             , Amount = 2000
             , AmountPerLevel = 1
           }
@@ -799,7 +799,7 @@ namespace Sporelings
 
         private void AddDungKeySeven()
         {
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("DungeonKeyG");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_DungeonKeyG");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -813,7 +813,7 @@ namespace Sporelings
               ,
                 Amount = 1
               ,
-                CraftingStation = "Blake"
+                CraftingStation = "VB_Blake"
               ,
                 Requirements = new[]
               {
@@ -825,7 +825,7 @@ namespace Sporelings
           }
           , new RequirementConfig
           {
-            Item = "TimeGear"
+            Item = "VB_TimeGear"
             , Amount = 3000
             , AmountPerLevel = 1
           }
@@ -843,7 +843,7 @@ namespace Sporelings
 
         private void AddDungKeyEight()
         {
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("DungeonKeyH");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_DungeonKeyH");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -857,7 +857,7 @@ namespace Sporelings
               ,
                 Amount = 1
               ,
-                CraftingStation = "Blake"
+                CraftingStation = "VB_Blake"
               ,
                 Requirements = new[]
               {
@@ -869,7 +869,7 @@ namespace Sporelings
           }
           , new RequirementConfig
           {
-            Item = "TimeGear"
+            Item = "VB_TimeGear"
             , Amount = 4444
             , AmountPerLevel = 1
           }
@@ -901,13 +901,13 @@ namespace Sporelings
               ,
                 Amount = 5
               ,
-                CraftingStation = "Blake"
+                CraftingStation = "VB_Blake"
               ,
                 Requirements = new[]
               {
           new RequirementConfig
           {
-            Item = "QuestItem1"
+            Item = "VB_QuestItem1"
             , Amount = 1
             , AmountPerLevel = 1
           }
@@ -923,7 +923,7 @@ namespace Sporelings
 
         private void Addqitemthree()
         {
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("QuestItem3");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_QuestItem3");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -937,7 +937,7 @@ namespace Sporelings
               ,
                 Amount = 1
               ,
-                CraftingStation = "Blake"
+                CraftingStation = "VB_Blake"
               ,
                 Requirements = new[]
               {
@@ -949,7 +949,7 @@ namespace Sporelings
           }
           , new RequirementConfig
           {
-            Item = "QuestItem2"
+            Item = "VB_QuestItem2"
             , Amount = 20
             , AmountPerLevel = 3
           }
@@ -959,7 +959,7 @@ namespace Sporelings
 
         private void AddTimeGear()
         {
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("TimeGear");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_TimeGear");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -973,13 +973,13 @@ namespace Sporelings
               ,
                 Amount = 1
               ,
-                CraftingStation = "HoraldicCube"
+                CraftingStation = "VB_HoraldicCube"
               ,
                 Requirements = new[]
               {
           new RequirementConfig
           {
-            Item = "TimeGearHalf"
+            Item = "VB_TimeGearHalf"
             , Amount = 2
             , AmountPerLevel = 1
           } 
@@ -989,7 +989,7 @@ namespace Sporelings
 
         private void AddTimeGearHalf()
         {
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("TimeGearHalf");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_TimeGearHalf");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -1003,13 +1003,13 @@ namespace Sporelings
               ,
                 Amount = 1
               ,
-                CraftingStation = "HoraldicCube"
+                CraftingStation = "VB_HoraldicCube"
               ,
                 Requirements = new[]
               {
           new RequirementConfig
           {
-            Item = "TimeGearPiece"
+            Item = "VB_TimeGearPiece"
             , Amount = 4
             , AmountPerLevel = 1
           }
@@ -1024,7 +1024,7 @@ namespace Sporelings
 
         private void AddCageHammer()
         {
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("CageHammer");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_CageHammer");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -1038,7 +1038,7 @@ namespace Sporelings
               ,
                 Amount = 1
               ,
-                CraftingStation = "Blake"
+                CraftingStation = "VB_Blake"
               ,
                 Requirements = new[]
               {
@@ -1069,7 +1069,7 @@ namespace Sporelings
 
         private void AddGwyrnsBelt()
         {
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("GuildbeltA");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_GuildbeltA");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -1083,7 +1083,7 @@ namespace Sporelings
               ,
                 Amount = 1
               ,
-                CraftingStation = "Blake"
+                CraftingStation = "VB_Blake"
               ,
                 Requirements = new[]
               {
@@ -1095,7 +1095,7 @@ namespace Sporelings
           }
           , new RequirementConfig
           {
-            Item = "TimeGear"
+            Item = "VB_TimeGear"
             , Amount = 2000
             , AmountPerLevel = 1
           }
@@ -1114,7 +1114,7 @@ namespace Sporelings
 
         private void AddWerdiBelt()
         {
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("GuildbeltB");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_GuildbeltB");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -1128,7 +1128,7 @@ namespace Sporelings
               ,
                 Amount = 1
               ,
-                CraftingStation = "Blake"
+                CraftingStation = "VB_Blake"
               ,
                 Requirements = new[]
               {
@@ -1140,7 +1140,7 @@ namespace Sporelings
           }
           , new RequirementConfig
           {
-            Item = "TimeGear"
+            Item = "VB_TimeGear"
             , Amount = 2000
             , AmountPerLevel = 1
           }
@@ -1158,7 +1158,7 @@ namespace Sporelings
 
         private void AddSandoBelt()
         {
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("GuildbeltC");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_GuildbeltC");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -1172,7 +1172,7 @@ namespace Sporelings
               ,
                 Amount = 1
               ,
-                CraftingStation = "Blake"
+                CraftingStation = "VB_Blake"
               ,
                 Requirements = new[]
               {
@@ -1184,7 +1184,7 @@ namespace Sporelings
           }
           , new RequirementConfig
           {
-            Item = "TimeGear"
+            Item = "VB_TimeGear"
             , Amount = 2000
             , AmountPerLevel = 1
           }
@@ -1202,7 +1202,7 @@ namespace Sporelings
 
         private void AddZinbuBelt()
         {
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("GuildbeltD");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_GuildbeltD");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -1216,7 +1216,7 @@ namespace Sporelings
               ,
                 Amount = 1
               ,
-                CraftingStation = "Blake"
+                CraftingStation = "VB_Blake"
               ,
                 Requirements = new[]
               {
@@ -1228,7 +1228,7 @@ namespace Sporelings
           }
           , new RequirementConfig
           {
-            Item = "TimeGear"
+            Item = "VB_TimeGear"
             , Amount = 2000
             , AmountPerLevel = 1
           }
@@ -1246,7 +1246,7 @@ namespace Sporelings
 
         private void AddShroomerSpear()
         {
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("ShroomerSpear");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_ShroomerSpear");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -1260,7 +1260,7 @@ namespace Sporelings
               ,
                 Amount = 1
               ,
-                CraftingStation = "Blake"
+                CraftingStation = "VB_Blake"
               ,
                 Requirements = new[]
               {
@@ -1272,7 +1272,7 @@ namespace Sporelings
           }
           , new RequirementConfig
           {
-            Item = "TimeGear"
+            Item = "VB_TimeGear"
             , Amount = 400
             , AmountPerLevel = 1
           }
@@ -1290,7 +1290,7 @@ namespace Sporelings
         
         private void AddReaperScythe()
         {
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("ReaperScythe");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_ReaperScythe");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -1304,19 +1304,19 @@ namespace Sporelings
               ,
                 Amount = 1
               ,
-                CraftingStation = "Blake"
+                CraftingStation = "VB_Blake"
               ,
                 Requirements = new[]
               {
           new RequirementConfig
           {
-            Item = "QuestItem4"
+            Item = "VB_QuestItem4"
             , Amount = 3
             , AmountPerLevel = 1
           }
           , new RequirementConfig
           {
-            Item = "TimeGear"
+            Item = "VB_TimeGear"
             , Amount = 10000
             , AmountPerLevel = 1
           }
@@ -1332,7 +1332,7 @@ namespace Sporelings
         }
         private void AddStarSword()
         {
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("StarSword");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_StarSword");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -1346,19 +1346,19 @@ namespace Sporelings
               ,
                 Amount = 1
               ,
-                CraftingStation = "Blake"
+                CraftingStation = "VB_Blake"
               ,
                 Requirements = new[]
               {
           new RequirementConfig
           {
-            Item = "QuestItem4"
+            Item = "VB_QuestItem4"
             , Amount = 5
             , AmountPerLevel = 1
           }
           , new RequirementConfig
           {
-            Item = "TimeGear"
+            Item = "VB_TimeGear"
             , Amount = 4444
             , AmountPerLevel = 1
           }
@@ -1374,7 +1374,7 @@ namespace Sporelings
         }
         private void AddPickaxeToxicon()
         {
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("PickaxeToxicon");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_PickaxeToxicon");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -1388,19 +1388,19 @@ namespace Sporelings
               ,
                 Amount = 1
               ,
-                CraftingStation = "DwarfFlamer"
+                CraftingStation = "VB_DwarfFlamer"
               ,
                 Requirements = new[]
               {
           new RequirementConfig
           {
-            Item = "QuestItem4"
+            Item = "VB_QuestItem4"
             , Amount = 1
             , AmountPerLevel = 1
           }
           , new RequirementConfig
           {
-            Item = "TimeGear"
+            Item = "VB_TimeGear"
             , Amount = 4000
             , AmountPerLevel = 1
           }
@@ -1417,7 +1417,7 @@ namespace Sporelings
 
         private void AddEyeSword()
         {
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("EyeSword");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_EyeSword");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -1431,19 +1431,19 @@ namespace Sporelings
               ,
                 Amount = 1
               ,
-                CraftingStation = "DwarfFlamer"
+                CraftingStation = "VB_DwarfFlamer"
               ,
                 Requirements = new[]
               {
           new RequirementConfig
           {
-            Item = "QuestItem4"
+            Item = "VB_QuestItem4"
             , Amount = 4
             , AmountPerLevel = 1
           }
           , new RequirementConfig
           {
-            Item = "TimeGear"
+            Item = "VB_TimeGear"
             , Amount = 4000
             , AmountPerLevel = 1
           }
@@ -1459,7 +1459,7 @@ namespace Sporelings
         }
         private void AddDwarfGunQuest()
         {
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("DwarfGunQuest");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_DwarfGunQuest");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -1473,19 +1473,19 @@ namespace Sporelings
               ,
                 Amount = 1
               ,
-                CraftingStation = "Dwarf"
+                CraftingStation = "VB_Dwarf"
               ,
                 Requirements = new[]
               {
           new RequirementConfig
           {
-            Item = "QuestItem3"
+            Item = "VB_QuestItem3"
             , Amount = 5
             , AmountPerLevel = 1
           }
           , new RequirementConfig
           {
-            Item = "TimeGear"
+            Item = "VB_TimeGear"
             , Amount = 700
             , AmountPerLevel = 3
           }
@@ -1503,7 +1503,7 @@ namespace Sporelings
 
         private void AddBattleaxeMother()
         {
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("BattleaxeMother");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_BattleaxeMother");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -1517,19 +1517,19 @@ namespace Sporelings
               ,
                 Amount = 1
               ,
-                CraftingStation = "Blake"
+                CraftingStation = "VB_Blake"
               ,
                 Requirements = new[]
               {
           new RequirementConfig
           {
-            Item = "QuestItem3"
+            Item = "VB_QuestItem3"
             , Amount = 10
             , AmountPerLevel = 1
           }
           , new RequirementConfig
           {
-            Item = "TimeGear"
+            Item = "VB_TimeGear"
             , Amount = 1000
             , AmountPerLevel = 3
           }
@@ -1546,7 +1546,7 @@ namespace Sporelings
         }
         private void AddAsianHat()
         {
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("AsianHat");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_AsianHat");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -1560,19 +1560,19 @@ namespace Sporelings
               ,
                 Amount = 1
               ,
-                CraftingStation = "Blake"
+                CraftingStation = "VB_Blake"
               ,
                 Requirements = new[]
               {
           new RequirementConfig
           {
-            Item = "QuestItem3"
+            Item = "VB_QuestItem3"
             , Amount = 10
             , AmountPerLevel = 1
           }
           , new RequirementConfig
           {
-            Item = "TimeGear"
+            Item = "VB_TimeGear"
             , Amount = 1000
             , AmountPerLevel = 3
           }
@@ -1590,7 +1590,7 @@ namespace Sporelings
 
         private void AddSageStaff()
         {
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("SageStaff");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_SageStaff");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -1604,7 +1604,7 @@ namespace Sporelings
               ,
                 Amount = 1
               ,
-                CraftingStation = "Blake"
+                CraftingStation = "VB_Blake"
               ,
                 Requirements = new[]
               {
@@ -1616,14 +1616,14 @@ namespace Sporelings
           }
           , new RequirementConfig
           {
-            Item = "TimeGear"
+            Item = "VB_TimeGear"
             , Amount = 2550
             , AmountPerLevel = 1
           }
 
           , new RequirementConfig
           {
-           Item = "QuestItem3"
+           Item = "VB_QuestItem3"
              , Amount = 2
              , AmountPerLevel = 1
            }
@@ -1634,7 +1634,7 @@ namespace Sporelings
 
         private void AddLoxSaddleOne()
         {
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("SaddleGeju");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_SaddleGeju");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -1648,7 +1648,7 @@ namespace Sporelings
               ,
                 Amount = 1
               ,
-                CraftingStation = "Blake"
+                CraftingStation = "VB_Blake"
               ,
                 Requirements = new[]
               {
@@ -1660,14 +1660,14 @@ namespace Sporelings
           }
           , new RequirementConfig
           {
-            Item = "TimeGear"
+            Item = "VB_TimeGear"
             , Amount = 550
             , AmountPerLevel = 1
           }
 
           , new RequirementConfig
           {
-           Item = "QuestItem2"
+           Item = "VB_QuestItem2"
              , Amount = 44
              , AmountPerLevel = 1
            }
@@ -1683,7 +1683,7 @@ namespace Sporelings
         private void AddDungDoorOne()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("dungeon_gateA");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_dungeon_gateA");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -1725,7 +1725,7 @@ namespace Sporelings
         private void AddDungDoorTwo()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("dungeon_gateB");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_dungeon_gateB");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -1767,7 +1767,7 @@ namespace Sporelings
         private void AddDungDoorThree()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("dungeon_gateC");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_dungeon_gateC");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -1809,7 +1809,7 @@ namespace Sporelings
         private void AddDungDoorFour()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("dungeon_gateD");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_dungeon_gateD");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -1851,7 +1851,7 @@ namespace Sporelings
         private void AddDungDoorFive()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("dungeon_gateE");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_dungeon_gateE");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -1893,7 +1893,7 @@ namespace Sporelings
         private void AddDungDoorSix()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("dungeon_gateF");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_dungeon_gateF");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -1935,7 +1935,7 @@ namespace Sporelings
         private void AddDungDoorSeven()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("dungeon_gateG");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_dungeon_gateG");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -1977,7 +1977,7 @@ namespace Sporelings
         private void AddDungDoorEight()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("dungeon_gateH");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_dungeon_gateH");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -2019,7 +2019,7 @@ namespace Sporelings
         private void AddLadder()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("LadderUp");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_LadderUp");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -2053,7 +2053,7 @@ namespace Sporelings
             },
             new RequirementConfig
             {
-              Item = "TimeGear"
+              Item = "VB_TimeGear"
               , Amount = 200
               , Recover = false
             }
@@ -2067,7 +2067,7 @@ namespace Sporelings
         private void AddBowl()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("Bowl");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_Bowl");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -2109,7 +2109,7 @@ namespace Sporelings
         private void AddGateOneWay()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("DungeonDoors");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_DungeonDoors");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -2153,7 +2153,7 @@ namespace Sporelings
         private void AddDungBlinder()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("DungeonBlinder");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_DungeonBlinder");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -2195,7 +2195,7 @@ namespace Sporelings
         private void AddDungSingle()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("DungeonSingle");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_DungeonSingle");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -2237,7 +2237,7 @@ namespace Sporelings
         private void AddDungTripod()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("DungeonTripod");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_DungeonTripod");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -2279,7 +2279,7 @@ namespace Sporelings
         private void AddWaterLiquid()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("WaterLiquid");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_WaterLiquid");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -2321,7 +2321,7 @@ namespace Sporelings
         private void AddEffectArea1()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("EffectArea1");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_EffectArea1");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -2363,7 +2363,7 @@ namespace Sporelings
         private void AddEffectArea2()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("EffectArea2");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_EffectArea2");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -2405,7 +2405,7 @@ namespace Sporelings
         private void AddFort()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("Fort");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_Fort");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -2447,7 +2447,7 @@ namespace Sporelings
         private void AddTownHouseOne()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("TownHouseOne");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_TownHouseOne");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -2489,7 +2489,7 @@ namespace Sporelings
         private void AddTownHouseTwo()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("TownHouseTwo");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_TownHouseTwo");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -2531,7 +2531,7 @@ namespace Sporelings
         private void AddTownHouseThree()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("TownHouseThree");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_TownHouseThree");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -2573,7 +2573,7 @@ namespace Sporelings
         private void AddTownHouseFour()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("TownHouseFour");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_TownHouseFour");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -2615,7 +2615,7 @@ namespace Sporelings
         private void AddTownHouseSix()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("TownHouseSix");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_TownHouseSix");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -2657,7 +2657,7 @@ namespace Sporelings
         private void AddTownHouseSeven()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("TownHouseSeven");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_TownHouseSeven");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -2699,7 +2699,7 @@ namespace Sporelings
         private void AddTownDesertOne()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("DesertHouseOne");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_DesertHouseOne");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -2741,7 +2741,7 @@ namespace Sporelings
         private void AddTownDesertTwo()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("DesertHouseTwo");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_DesertHouseTwo");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -2783,7 +2783,7 @@ namespace Sporelings
         private void AddTownDesertThree()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("DesertHouseThree");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_DesertHouseThree");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -2825,7 +2825,7 @@ namespace Sporelings
         private void AddGuildHouse()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("GuildHouse");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_GuildHouse");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -2871,7 +2871,7 @@ namespace Sporelings
         private void AddValkyria()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("HomeGo");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_HomeGo");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -2913,7 +2913,7 @@ namespace Sporelings
         private void AddHoraCube()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("HoraldicCube");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_HoraldicCube");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -2941,7 +2941,7 @@ namespace Sporelings
             },
             new RequirementConfig
             {
-              Item = "ArteMat"
+              Item = "VB_ArteMat"
               , Amount = 10
               , Recover = false
             }
@@ -2955,7 +2955,7 @@ namespace Sporelings
         private void AddSiegeMachine()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("SiegeMachine");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_SiegeMachine");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -2997,7 +2997,7 @@ namespace Sporelings
         private void AddBossCanon()
         {
             // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("BossCanon");
+            var prefab = _assetBundle.LoadAsset<GameObject>("VB_BossCanon");
 
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
@@ -3049,7 +3049,7 @@ namespace Sporelings
         {
             // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
             // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("TrophyInfestation");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_TrophyInfestation");
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
             Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
@@ -3061,7 +3061,7 @@ namespace Sporelings
         {
             // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
             // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("BossBTrophy");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_BossBTrophy");
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
             Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
@@ -3073,7 +3073,7 @@ namespace Sporelings
         {
             // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
             // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("ArteMat");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_ArteMat");
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
             Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
@@ -3085,7 +3085,7 @@ namespace Sporelings
         {
             // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
             // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("SumToken");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_SumToken");
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
             Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
@@ -3097,7 +3097,7 @@ namespace Sporelings
         {
             // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
             // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("SumTokenTwo");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_SumTokenTwo");
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
             Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
@@ -3111,7 +3111,7 @@ namespace Sporelings
         {
             // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
             // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("FoxMeat");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_FoxMeat");
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
             Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
@@ -3123,7 +3123,7 @@ namespace Sporelings
         {
             // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
             // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("QuestItem1");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_QuestItem1");
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
             Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
@@ -3135,7 +3135,7 @@ namespace Sporelings
         {
             // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
             // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("QuestItem2");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_QuestItem2");
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
             Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
@@ -3147,7 +3147,7 @@ namespace Sporelings
         {
             // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
             // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("QuestItem4");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_QuestItem4");
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
             Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
@@ -3159,7 +3159,7 @@ namespace Sporelings
         {
             // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
             // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
-            var itemPrefab = _assetBundle.LoadAsset<GameObject>("TimeGearPiece");
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_TimeGearPiece");
 #if DEBUG
             // ReSharper disable once StringLiteralTypo
             Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
@@ -3173,7 +3173,7 @@ namespace Sporelings
        {
            // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
            // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
-           var itemPrefab = _assetBundle.LoadAsset<GameObject>("Dwarfgun");
+           var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_Dwarfgun");
 #if DEBUG
            // ReSharper disable once StringLiteralTypo
            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
