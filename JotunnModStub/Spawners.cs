@@ -105,6 +105,7 @@ namespace Sporelings
         {
             ItemManager.Instance.AddStatusEffect(new CustomStatusEffect(ScriptableObject.CreateInstance<GP_Gwyrn>(), false));
             ItemManager.Instance.AddStatusEffect(new CustomStatusEffect(ScriptableObject.CreateInstance<GP_Infestation>(), false));
+            ItemManager.Instance.AddStatusEffect(new CustomStatusEffect(ScriptableObject.CreateInstance<GP_Luvulv>(), false));
         }
 
 
@@ -120,13 +121,17 @@ namespace Sporelings
             AddDungDoorSix();
             AddDungDoorSeven();
             AddDungDoorEight();
-            AddDwarfSpawn();
+         
+            
             AddLadder();
             AddBowl();
             AddGateOneWay();
             AddDungBlinder();
             AddDungSingle();
             AddDungTripod();
+            AddWaterLiquid();
+            AddEffectArea1();
+            AddEffectArea2();
             // TOWN piece 
             AddFort();
             AddTownHouseOne();
@@ -144,6 +149,10 @@ namespace Sporelings
             AddBossCanon();
             //guild piece
             AddGuildHouse();
+            AddHoraCube();
+            //pokus
+           
+            AddValkyria();
         }
 
         // TADY SE MUSÍ UDĚLAT JAKOBY PROMĚNÁ PRO VŠECHNY PŘEDMĚTY KTERÝ CHCEŠ PŘIDÁVAT = TYPU CRAFTING/NON CRAFTING 
@@ -167,11 +176,37 @@ namespace Sporelings
             AddWerdiBelt();
             AddSandoBelt();
             AddZinbuBelt();
+            Addqitemone();
+            Addqitemtwo();
+            Addqitemthree();
+            Addqitemfour();
             //npc items
             AddDwarfgun();
+            
+            AddTimeGear();
+            AddTimeGearPiece();
+            AddTimeGearHalf();
+            AddRedBullet();
+            AddHoralpiece();
+            AddSumToken();
+            AddSumTokenTwo();
+            // weapons
+            AddShroomerSpear();
+            AddSageStaff();
+            AddAsianHat();
+            AddBattleaxeMother();
+            AddDwarfGunQuest();
+            AddEyeSword();
+            AddPickaxeToxicon();
+            AddReaperScythe();
+            AddStarSword();
             //boss items
             AddBossATrophy();
+            AddBossBTrophy();
+            AddBossBMeat();
 
+            //loxes
+            AddLoxSaddleOne();
         }
 
         private void LoadPrefabs()
@@ -210,11 +245,26 @@ namespace Sporelings
             var blakenpc = _assetBundle.LoadAsset<GameObject>("Blake");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(blakenpc, true));
 
+            var grugnpc = _assetBundle.LoadAsset<GameObject>("Grug");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(grugnpc, true));
+
+            var shruknpc = _assetBundle.LoadAsset<GameObject>("Shruk");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(shruknpc, true));
+
             var nomadnpc = _assetBundle.LoadAsset<GameObject>("Dwarf");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(nomadnpc, true));
 
             var nomadsnpc = _assetBundle.LoadAsset<GameObject>("DwarfFlamer");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(nomadsnpc, true));
+
+            var vrack = _assetBundle.LoadAsset<GameObject>("Vracka");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(vrack, true));
+
+            var dwsumA = _assetBundle.LoadAsset<GameObject>("SummAA");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(dwsumA, true));
+
+            var dwsumB = _assetBundle.LoadAsset<GameObject>("SummAB");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(dwsumB, true));
 
             //Guild
 
@@ -223,6 +273,18 @@ namespace Sporelings
 
             var AddIslandDung = _assetBundle.LoadAsset<GameObject>("IslandDungeon");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(AddIslandDung, true));
+
+            var AddInfostone = _assetBundle.LoadAsset<GameObject>("InfoStone");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(AddInfostone, true));
+
+            var AddWelcstone = _assetBundle.LoadAsset<GameObject>("WelcomeStone");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(AddWelcstone, true));
+
+            var Addquesstone = _assetBundle.LoadAsset<GameObject>("QuestStone");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(Addquesstone, true));
+
+            var sinquest = _assetBundle.LoadAsset<GameObject>("SignQuest");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(sinquest, true));
 
             //Nature prefabs 
 
@@ -235,10 +297,16 @@ namespace Sporelings
             var rockoone = _assetBundle.LoadAsset<GameObject>("RockOne");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(rockoone, true));
 
+            var Addartespa = _assetBundle.LoadAsset<GameObject>("ArtefaktRune");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(Addartespa, true));
+
 
             // BOSSES
             var bossone = _assetBundle.LoadAsset<GameObject>("BossA");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(bossone, true));
+
+            var bosstwo = _assetBundle.LoadAsset<GameObject>("BossB");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(bosstwo, true));
 
             var bossonealt = _assetBundle.LoadAsset<GameObject>("BossAAltar");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(bossonealt, true));
@@ -246,8 +314,40 @@ namespace Sporelings
             var bossonestn = _assetBundle.LoadAsset<GameObject>("BossStone_A");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(bossonestn, true));
 
+            var bosstwoalt = _assetBundle.LoadAsset<GameObject>("BossBAltar");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(bosstwoalt, true));
+
+            var bosstwostn = _assetBundle.LoadAsset<GameObject>("BossStone_B");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(bosstwostn, true));
+
             var lightAOE = _assetBundle.LoadAsset<GameObject>("lightningAOE 1");
             PrefabManager.Instance.AddPrefab(new CustomPrefab(lightAOE, true));
+
+            // LOXES
+            var loxone = _assetBundle.LoadAsset<GameObject>("Geju");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(loxone, true));
+
+            var loxtwo = _assetBundle.LoadAsset<GameObject>("Bibzu");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(loxtwo, true));
+
+            // Spawners
+            var spatA = _assetBundle.LoadAsset<GameObject>("SpawnerTrA");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(spatA, true));
+
+            var spatB = _assetBundle.LoadAsset<GameObject>("SpawnerTrB");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(spatB, true));
+
+            var spatC = _assetBundle.LoadAsset<GameObject>("SpawnerTrC");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(spatC, true));
+
+            var spaoA = _assetBundle.LoadAsset<GameObject>("OceanSpaA");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(spaoA, true));
+
+            var spaoB = _assetBundle.LoadAsset<GameObject>("OceanSpaB");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(spaoB, true));
+
+            var spaoC = _assetBundle.LoadAsset<GameObject>("OceanSpaC");
+            PrefabManager.Instance.AddPrefab(new CustomPrefab(spaoC, true));
 
 
             // rostliny
@@ -259,7 +359,7 @@ namespace Sporelings
                     BlockCheck = true
                 });*/
 
-            CustomVegetation Plants = new CustomVegetation(jungletree, false,
+            CustomVegetation Plants = new CustomVegetation(spatA, false,
                 new VegetationConfig
                 {
                     Biome = Heightmap.Biome.Meadows,
@@ -302,7 +402,7 @@ namespace Sporelings
                 });
             ZoneManager.Instance.AddCustomVegetation(Chaluhatwo);
 
-            CustomVegetation Oceturtle = new CustomVegetation(turtleg, false,
+            CustomVegetation Oceturtle = new CustomVegetation(spaoB, false,
                 new VegetationConfig
                 {
                     Biome = Heightmap.Biome.Ocean,
@@ -328,7 +428,7 @@ namespace Sporelings
                 });
             ZoneManager.Instance.AddCustomVegetation(Chaluhathree);
 
-            CustomVegetation RybaOne = new CustomVegetation(fishone, false,
+            CustomVegetation RybaOne = new CustomVegetation(spaoA, false,
                 new VegetationConfig
                 {
                     Biome = Heightmap.Biome.Ocean,
@@ -342,7 +442,7 @@ namespace Sporelings
                 });
             ZoneManager.Instance.AddCustomVegetation(RybaOne);
 
-            CustomVegetation RybaThree = new CustomVegetation(fishthree, false,
+            CustomVegetation RybaThree = new CustomVegetation(spaoC, false,
                 new VegetationConfig
                 {
                     Biome = Heightmap.Biome.Ocean,
@@ -398,7 +498,7 @@ namespace Sporelings
                 });
             ZoneManager.Instance.AddCustomVegetation(RockOne);
 
-            CustomVegetation Pazruda = new CustomVegetation(Addpazruda, false,
+            CustomVegetation Pazruda = new CustomVegetation(spatC, false,
                 new VegetationConfig
                 {
                     Biome = Heightmap.Biome.Ocean,
@@ -411,6 +511,22 @@ namespace Sporelings
                     ScaleMax = 2
                 });
             ZoneManager.Instance.AddCustomVegetation(Pazruda);
+
+            CustomVegetation ArteSpa = new CustomVegetation(spatB, false,
+                new VegetationConfig
+                {
+                    Biome = Heightmap.Biome.Ocean,
+                    Min = 1,
+                    Max = 3,
+                    GroupSizeMin = 1,
+                    GroupSizeMax = 2,
+                    GroupRadius = 80,
+                    ScaleMin = 1,
+                    ScaleMax = 2
+                });
+            ZoneManager.Instance.AddCustomVegetation(ArteSpa);
+
+            
         }
 
         #region Items
@@ -439,22 +555,22 @@ namespace Sporelings
               {
           new RequirementConfig
           {
-            Item = "Crystal"
-            , Amount = 20
+            Item = "SurtlingCore"
+            , Amount = 2
             , AmountPerLevel = 1
           }
           , new RequirementConfig
           {
-            Item = "TrophySGolem"
-            , Amount = 2
-            , AmountPerLevel = 3
+            Item = "TimeGear"
+            , Amount = 250
+            , AmountPerLevel = 1
           }
 
           , new RequirementConfig
           {
-           Item = "Silver"
-             , Amount = 10
-             , AmountPerLevel = 2
+           Item = "Bronze"
+             , Amount = 2
+             , AmountPerLevel = 1
            }
 
         }
@@ -484,21 +600,21 @@ namespace Sporelings
           new RequirementConfig
           {
             Item = "SurtlingCore"
-            , Amount = 20
+            , Amount = 2
             , AmountPerLevel = 1
           }
           , new RequirementConfig
           {
-            Item = "TrophySurtling"
-            , Amount = 2
-            , AmountPerLevel = 3
+            Item = "TimeGear"
+            , Amount = 444
+            , AmountPerLevel = 1
           }
 
           , new RequirementConfig
           {
            Item = "Bronze"
-             , Amount = 10
-             , AmountPerLevel = 2
+             , Amount = 2
+             , AmountPerLevel = 1
            }
 
         }
@@ -527,22 +643,22 @@ namespace Sporelings
               {
           new RequirementConfig
           {
-            Item = "TrophyBonemass"
+            Item = "SurtlingCore"
             , Amount = 2
             , AmountPerLevel = 1
           }
           , new RequirementConfig
           {
-            Item = "TrophyDraugr"
-            , Amount = 20
-            , AmountPerLevel = 3
+            Item = "TimeGear"
+            , Amount = 800
+            , AmountPerLevel = 1
           }
 
           , new RequirementConfig
           {
            Item = "Iron"
-             , Amount = 10
-             , AmountPerLevel = 2
+             , Amount = 2
+             , AmountPerLevel = 1
            }
 
         }
@@ -571,22 +687,22 @@ namespace Sporelings
               {
           new RequirementConfig
           {
-            Item = "TrophyHatchling"
-            , Amount = 20
+            Item = "SurtlingCore"
+            , Amount = 2
             , AmountPerLevel = 1
           }
           , new RequirementConfig
           {
-            Item = "TrophyDragonQueen"
-            , Amount = 2
-            , AmountPerLevel = 3
+            Item = "TimeGear"
+            , Amount = 1111
+            , AmountPerLevel = 1
           }
 
           , new RequirementConfig
           {
-           Item = "Silver"
-             , Amount = 10
-             , AmountPerLevel = 2
+           Item = "Iron"
+             , Amount = 2
+             , AmountPerLevel = 1
            }
 
         }
@@ -615,22 +731,22 @@ namespace Sporelings
               {
           new RequirementConfig
           {
-            Item = "TrophyHatchling"
-            , Amount = 10
+            Item = "SurtlingCore"
+            , Amount = 2
             , AmountPerLevel = 1
           }
           , new RequirementConfig
           {
-            Item = "TrophyWolf"
-            , Amount = 20
-            , AmountPerLevel = 3
+            Item = "TimeGear"
+            , Amount = 1500
+            , AmountPerLevel = 1
           }
 
           , new RequirementConfig
           {
            Item = "Silver"
-             , Amount = 10
-             , AmountPerLevel = 2
+             , Amount = 2
+             , AmountPerLevel = 1
            }
 
         }
@@ -659,22 +775,22 @@ namespace Sporelings
               {
           new RequirementConfig
           {
-            Item = "TrophyGrowth"
-            , Amount = 20
+            Item = "SurtlingCore"
+            , Amount = 2
             , AmountPerLevel = 1
           }
           , new RequirementConfig
           {
-            Item = "TrophyGoblinShaman"
-            , Amount = 10
-            , AmountPerLevel = 3
+            Item = "TimeGear"
+            , Amount = 2000
+            , AmountPerLevel = 1
           }
 
           , new RequirementConfig
           {
-           Item = "BlackMetal"
-             , Amount = 10
-             , AmountPerLevel = 2
+           Item = "Silver"
+             , Amount = 2
+             , AmountPerLevel = 1
            }
 
         }
@@ -703,22 +819,22 @@ namespace Sporelings
               {
           new RequirementConfig
           {
-            Item = "TrophyDeathsquito"
-            , Amount = 15
+            Item = "SurtlingCore"
+            , Amount = 2
             , AmountPerLevel = 1
           }
           , new RequirementConfig
           {
-            Item = "TrophyGrowth"
-            , Amount = 15
-            , AmountPerLevel = 3
+            Item = "TimeGear"
+            , Amount = 3000
+            , AmountPerLevel = 1
           }
 
           , new RequirementConfig
           {
-           Item = "Copper"
-             , Amount = 40
-             , AmountPerLevel = 2
+           Item = "BlackMetal"
+             , Amount = 2
+             , AmountPerLevel = 1
            }
 
         }
@@ -747,27 +863,163 @@ namespace Sporelings
               {
           new RequirementConfig
           {
-            Item = "TrophySerpent"
-            , Amount = 10
+            Item = "SurtlingCore"
+            , Amount = 2
             , AmountPerLevel = 1
           }
           , new RequirementConfig
           {
-            Item = "FishingBait"
-            , Amount = 20
-            , AmountPerLevel = 3
+            Item = "TimeGear"
+            , Amount = 4444
+            , AmountPerLevel = 1
           }
 
           , new RequirementConfig
           {
-           Item = "Tin"
-             , Amount = 40
-             , AmountPerLevel = 2
+           Item = "BlackMetal"
+             , Amount = 2
+             , AmountPerLevel = 1
            }
 
         }
             }));
         }
+
+        private void AddRedBullet()
+        {
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("RedBullet");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+            {
+                // ReSharper disable once StringLiteralTypo
+                Name = "Red bullet"
+              ,
+                Amount = 5
+              ,
+                CraftingStation = "Blake"
+              ,
+                Requirements = new[]
+              {
+          new RequirementConfig
+          {
+            Item = "QuestItem1"
+            , Amount = 1
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "Coal"
+            , Amount = 1
+            , AmountPerLevel = 3
+          }
+        }
+            }));
+        }
+
+        private void Addqitemthree()
+        {
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("QuestItem3");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+            {
+                // ReSharper disable once StringLiteralTypo
+                Name = "Quest item three"
+              ,
+                Amount = 1
+              ,
+                CraftingStation = "Blake"
+              ,
+                Requirements = new[]
+              {
+          new RequirementConfig
+          {
+            Item = "TrophyDragonQueen"
+            , Amount = 1
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "QuestItem2"
+            , Amount = 20
+            , AmountPerLevel = 3
+          }
+        }
+            }));
+        }
+
+        private void AddTimeGear()
+        {
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("TimeGear");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+            {
+                // ReSharper disable once StringLiteralTypo
+                Name = "Artefakt"
+              ,
+                Amount = 1
+              ,
+                CraftingStation = "HoraldicCube"
+              ,
+                Requirements = new[]
+              {
+          new RequirementConfig
+          {
+            Item = "TimeGearHalf"
+            , Amount = 2
+            , AmountPerLevel = 1
+          } 
+        }
+            }));
+        }
+
+        private void AddTimeGearHalf()
+        {
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("TimeGearHalf");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+            {
+                // ReSharper disable once StringLiteralTypo
+                Name = "Půlka Artefaktu"
+              ,
+                Amount = 1
+              ,
+                CraftingStation = "HoraldicCube"
+              ,
+                Requirements = new[]
+              {
+          new RequirementConfig
+          {
+            Item = "TimeGearPiece"
+            , Amount = 4
+            , AmountPerLevel = 1
+          }
+        }
+            }));
+        }
+
+
+        
+       
 
 
         private void AddCageHammer()
@@ -837,22 +1089,22 @@ namespace Sporelings
               {
           new RequirementConfig
           {
-            Item = "Crystal"
-            , Amount = 20
+            Item = "SurtlingCore"
+            , Amount = 2
             , AmountPerLevel = 1
           }
           , new RequirementConfig
           {
-            Item = "TrophySGolem"
-            , Amount = 2
-            , AmountPerLevel = 3
+            Item = "TimeGear"
+            , Amount = 2000
+            , AmountPerLevel = 1
           }
 
           , new RequirementConfig
           {
-           Item = "Silver"
-             , Amount = 10
-             , AmountPerLevel = 2
+           Item = "Iron"
+             , Amount = 2
+             , AmountPerLevel = 1
            }
 
         }
@@ -882,22 +1134,22 @@ namespace Sporelings
               {
           new RequirementConfig
           {
-            Item = "Crystal"
-            , Amount = 20
+            Item = "SurtlingCore"
+            , Amount = 2
             , AmountPerLevel = 1
           }
           , new RequirementConfig
           {
-            Item = "TrophySGolem"
-            , Amount = 2
-            , AmountPerLevel = 3
+            Item = "TimeGear"
+            , Amount = 2000
+            , AmountPerLevel = 1
           }
 
           , new RequirementConfig
           {
-           Item = "Silver"
-             , Amount = 10
-             , AmountPerLevel = 2
+           Item = "Iron"
+             , Amount = 2
+             , AmountPerLevel = 1
            }
 
         }
@@ -926,22 +1178,22 @@ namespace Sporelings
               {
           new RequirementConfig
           {
-            Item = "Crystal"
-            , Amount = 20
+            Item = "SurtlingCore"
+            , Amount = 2
             , AmountPerLevel = 1
           }
           , new RequirementConfig
           {
-            Item = "TrophySGolem"
-            , Amount = 2
-            , AmountPerLevel = 3
+            Item = "TimeGear"
+            , Amount = 2000
+            , AmountPerLevel = 1
           }
 
           , new RequirementConfig
           {
-           Item = "Silver"
-             , Amount = 10
-             , AmountPerLevel = 2
+           Item = "Iron"
+             , Amount = 2
+             , AmountPerLevel = 1
            }
 
         }
@@ -970,21 +1222,278 @@ namespace Sporelings
               {
           new RequirementConfig
           {
-            Item = "Crystal"
-            , Amount = 20
+            Item = "SurtlingCore"
+            , Amount = 2
             , AmountPerLevel = 1
           }
           , new RequirementConfig
           {
-            Item = "TrophySGolem"
-            , Amount = 2
+            Item = "TimeGear"
+            , Amount = 2000
+            , AmountPerLevel = 1
+          }
+
+          , new RequirementConfig
+          {
+           Item = "Iron"
+             , Amount = 2
+             , AmountPerLevel = 1
+           }
+
+        }
+            }));
+        }
+
+        private void AddShroomerSpear()
+        {
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("ShroomerSpear");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+            {
+                // ReSharper disable once StringLiteralTypo
+                Name = "Krystalové kopí"
+              ,
+                Amount = 1
+              ,
+                CraftingStation = "Blake"
+              ,
+                Requirements = new[]
+              {
+          new RequirementConfig
+          {
+            Item = "Crystal"
+            , Amount = 3
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "TimeGear"
+            , Amount = 400
+            , AmountPerLevel = 1
+          }
+
+          , new RequirementConfig
+          {
+           Item = "FineWood"
+             , Amount = 10
+             , AmountPerLevel = 1
+           }
+
+        }
+            }));
+        }
+        
+        private void AddReaperScythe()
+        {
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("ReaperScythe");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+            {
+                // ReSharper disable once StringLiteralTypo
+                Name = "Smrť"
+              ,
+                Amount = 1
+              ,
+                CraftingStation = "Blake"
+              ,
+                Requirements = new[]
+              {
+          new RequirementConfig
+          {
+            Item = "QuestItem4"
+            , Amount = 3
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "TimeGear"
+            , Amount = 10000
+            , AmountPerLevel = 1
+          }
+
+          , new RequirementConfig
+          {
+           Item = "Guck"
+             , Amount = 100
+             , AmountPerLevel = 1
+           }
+        }
+            }));
+        }
+        private void AddStarSword()
+        {
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("StarSword");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+            {
+                // ReSharper disable once StringLiteralTypo
+                Name = "Hvězdný meč"
+              ,
+                Amount = 1
+              ,
+                CraftingStation = "Blake"
+              ,
+                Requirements = new[]
+              {
+          new RequirementConfig
+          {
+            Item = "QuestItem4"
+            , Amount = 5
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "TimeGear"
+            , Amount = 4444
+            , AmountPerLevel = 1
+          }
+
+          , new RequirementConfig
+          {
+           Item = "BlackMetalScrap"
+             , Amount = 10
+             , AmountPerLevel = 1
+           }
+        }
+            }));
+        }
+        private void AddPickaxeToxicon()
+        {
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("PickaxeToxicon");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+            {
+                // ReSharper disable once StringLiteralTypo
+                Name = "Krumpáč nákazy"
+              ,
+                Amount = 1
+              ,
+                CraftingStation = "DwarfFlamer"
+              ,
+                Requirements = new[]
+              {
+          new RequirementConfig
+          {
+            Item = "QuestItem4"
+            , Amount = 1
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "TimeGear"
+            , Amount = 4000
+            , AmountPerLevel = 1
+          }
+
+          , new RequirementConfig
+          {
+           Item = "TrophyGreydwarfShaman"
+             , Amount = 10
+             , AmountPerLevel = 1
+           }
+        }
+            }));
+        }
+
+        private void AddEyeSword()
+        {
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("EyeSword");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+            {
+                // ReSharper disable once StringLiteralTypo
+                Name = "Prokletý meč"
+              ,
+                Amount = 1
+              ,
+                CraftingStation = "DwarfFlamer"
+              ,
+                Requirements = new[]
+              {
+          new RequirementConfig
+          {
+            Item = "QuestItem4"
+            , Amount = 4
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "TimeGear"
+            , Amount = 4000
+            , AmountPerLevel = 1
+          }
+
+          , new RequirementConfig
+          {
+           Item = "TrophySerpent"
+             , Amount = 7
+             , AmountPerLevel = 1
+           }
+        }
+            }));
+        }
+        private void AddDwarfGunQuest()
+        {
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("DwarfGunQuest");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+            {
+                // ReSharper disable once StringLiteralTypo
+                Name = "Trpasličí pistole"
+              ,
+                Amount = 1
+              ,
+                CraftingStation = "Dwarf"
+              ,
+                Requirements = new[]
+              {
+          new RequirementConfig
+          {
+            Item = "QuestItem3"
+            , Amount = 5
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "TimeGear"
+            , Amount = 700
             , AmountPerLevel = 3
           }
 
           , new RequirementConfig
           {
-           Item = "Silver"
-             , Amount = 10
+           Item = "TrophyGreydwarfShaman"
+             , Amount = 7
              , AmountPerLevel = 2
            }
 
@@ -992,15 +1501,181 @@ namespace Sporelings
             }));
         }
 
+        private void AddBattleaxeMother()
+        {
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("BattleaxeMother");
 
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
 
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+            {
+                // ReSharper disable once StringLiteralTypo
+                Name = "Sekera z kostí loxů"
+              ,
+                Amount = 1
+              ,
+                CraftingStation = "Blake"
+              ,
+                Requirements = new[]
+              {
+          new RequirementConfig
+          {
+            Item = "QuestItem3"
+            , Amount = 10
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "TimeGear"
+            , Amount = 1000
+            , AmountPerLevel = 3
+          }
 
+          , new RequirementConfig
+          {
+           Item = "TrophyLox"
+             , Amount = 5
+             , AmountPerLevel = 2
+           }
 
+        }
+            }));
+        }
+        private void AddAsianHat()
+        {
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("AsianHat");
 
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
 
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+            {
+                // ReSharper disable once StringLiteralTypo
+                Name = "Asijský klobouk"
+              ,
+                Amount = 1
+              ,
+                CraftingStation = "Blake"
+              ,
+                Requirements = new[]
+              {
+          new RequirementConfig
+          {
+            Item = "QuestItem3"
+            , Amount = 10
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "TimeGear"
+            , Amount = 1000
+            , AmountPerLevel = 3
+          }
 
+          , new RequirementConfig
+          {
+           Item = "FineWood"
+             , Amount = 4
+             , AmountPerLevel = 2
+           }
 
+        }
+            }));
+        }
 
+        private void AddSageStaff()
+        {
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("SageStaff");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+            {
+                // ReSharper disable once StringLiteralTypo
+                Name = "Sage staff"
+              ,
+                Amount = 1
+              ,
+                CraftingStation = "Blake"
+              ,
+                Requirements = new[]
+              {
+          new RequirementConfig
+          {
+            Item = "SurtlingCore"
+            , Amount = 20
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "TimeGear"
+            , Amount = 2550
+            , AmountPerLevel = 1
+          }
+
+          , new RequirementConfig
+          {
+           Item = "QuestItem3"
+             , Amount = 2
+             , AmountPerLevel = 1
+           }
+
+        }
+            }));
+        }
+
+        private void AddLoxSaddleOne()
+        {
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("SaddleGeju");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false, new ItemConfig
+            {
+                // ReSharper disable once StringLiteralTypo
+                Name = "Saddle Gejdzu"
+              ,
+                Amount = 1
+              ,
+                CraftingStation = "Blake"
+              ,
+                Requirements = new[]
+              {
+          new RequirementConfig
+          {
+            Item = "SurtlingCore"
+            , Amount = 20
+            , AmountPerLevel = 1
+          }
+          , new RequirementConfig
+          {
+            Item = "TimeGear"
+            , Amount = 550
+            , AmountPerLevel = 1
+          }
+
+          , new RequirementConfig
+          {
+           Item = "QuestItem2"
+             , Amount = 44
+             , AmountPerLevel = 1
+           }
+
+        }
+            }));
+        }
+       
 
 
         // BUILD
@@ -1031,7 +1706,7 @@ namespace Sporelings
             new RequirementConfig
             {
               Item = "Iron"
-              , Amount = 10
+              , Amount = 999
               , Recover = false
             },
             new RequirementConfig
@@ -1073,7 +1748,7 @@ namespace Sporelings
             new RequirementConfig
             {
               Item = "Iron"
-              , Amount = 10
+              , Amount = 999
               , Recover = false
             },
             new RequirementConfig
@@ -1115,7 +1790,7 @@ namespace Sporelings
             new RequirementConfig
             {
               Item = "Iron"
-              , Amount = 10
+              , Amount = 999
               , Recover = false
             },
             new RequirementConfig
@@ -1157,7 +1832,7 @@ namespace Sporelings
             new RequirementConfig
             {
               Item = "Iron"
-              , Amount = 10
+              , Amount = 999
               , Recover = false
             },
             new RequirementConfig
@@ -1199,7 +1874,7 @@ namespace Sporelings
             new RequirementConfig
             {
               Item = "Iron"
-              , Amount = 10
+              , Amount = 999
               , Recover = false
             },
             new RequirementConfig
@@ -1241,7 +1916,7 @@ namespace Sporelings
             new RequirementConfig
             {
               Item = "Iron"
-              , Amount = 10
+              , Amount = 999
               , Recover = false
             },
             new RequirementConfig
@@ -1283,7 +1958,7 @@ namespace Sporelings
             new RequirementConfig
             {
               Item = "Iron"
-              , Amount = 10
+              , Amount = 999
               , Recover = false
             },
             new RequirementConfig
@@ -1325,7 +2000,7 @@ namespace Sporelings
             new RequirementConfig
             {
               Item = "Iron"
-              , Amount = 10
+              , Amount = 999
               , Recover = false
             },
             new RequirementConfig
@@ -1340,50 +2015,6 @@ namespace Sporelings
             PieceManager.Instance.AddPiece(dundoor8);
 
         }
-
-
-        private void AddDwarfSpawn()
-        {
-            // ReSharper disable once StringLiteralTypo
-            var prefab = _assetBundle.LoadAsset<GameObject>("Dwarf_spawner");
-
-#if DEBUG
-            // ReSharper disable once StringLiteralTypo
-            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} prefab == null : {prefab == null}"); // This is null?
-#endif
-
-            // ReSharper disable twice IdentifierTypo
-            var dwspawn = new CustomPiece(prefab,
-              false,
-              new PieceConfig
-              {
-                  PieceTable = "_CageHammerPieceTable"
-                ,
-                  CraftingStation = ""
-                ,
-                  Enabled = true
-                ,
-                  Requirements = new[]
-                {
-            new RequirementConfig
-            {
-              Item = "Iron"
-              , Amount = 150
-              , Recover = false
-            },
-            new RequirementConfig
-            {
-              Item = "FineWood"
-              , Amount = 20
-              , Recover = false
-            }
-                }
-              });
-
-            PieceManager.Instance.AddPiece(dwspawn);
-
-        }
-
 
         private void AddLadder()
         {
@@ -1400,7 +2031,7 @@ namespace Sporelings
               false,
               new PieceConfig
               {
-                  PieceTable = "_CageHammerPieceTable"
+                  PieceTable = "_HammerPieceTable"
                 ,
                   CraftingStation = ""
                 ,
@@ -1418,6 +2049,12 @@ namespace Sporelings
             {
               Item = "FineWood"
               , Amount = 20
+              , Recover = false
+            },
+            new RequirementConfig
+            {
+              Item = "TimeGear"
+              , Amount = 200
               , Recover = false
             }
                 }
@@ -1636,6 +2273,132 @@ namespace Sporelings
               });
 
             PieceManager.Instance.AddPiece(dtri);
+
+        }
+
+        private void AddWaterLiquid()
+        {
+            // ReSharper disable once StringLiteralTypo
+            var prefab = _assetBundle.LoadAsset<GameObject>("WaterLiquid");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} prefab == null : {prefab == null}"); // This is null?
+#endif
+
+            // ReSharper disable twice IdentifierTypo
+            var wali = new CustomPiece(prefab,
+              false,
+              new PieceConfig
+              {
+                  PieceTable = "_CageHammerPieceTable"
+                ,
+                  CraftingStation = ""
+                ,
+                  Enabled = true
+                ,
+                  Requirements = new[]
+                {
+            new RequirementConfig
+            {
+              Item = "Tar"
+              , Amount = 50
+              , Recover = false
+            },
+            new RequirementConfig
+            {
+              Item = "MeadTasty"
+              , Amount = 20
+              , Recover = false
+            }
+                }
+              });
+
+            PieceManager.Instance.AddPiece(wali);
+
+        }
+
+        private void AddEffectArea1()
+        {
+            // ReSharper disable once StringLiteralTypo
+            var prefab = _assetBundle.LoadAsset<GameObject>("EffectArea1");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} prefab == null : {prefab == null}"); // This is null?
+#endif
+
+            // ReSharper disable twice IdentifierTypo
+            var effaone = new CustomPiece(prefab,
+              false,
+              new PieceConfig
+              {
+                  PieceTable = "_CageHammerPieceTable"
+                ,
+                  CraftingStation = ""
+                ,
+                  Enabled = true
+                ,
+                  Requirements = new[]
+                {
+            new RequirementConfig
+            {
+              Item = "SurtlingCore"
+              , Amount = 50
+              , Recover = false
+            },
+            new RequirementConfig
+            {
+              Item = "MeadTasty"
+              , Amount = 20
+              , Recover = false
+            }
+                }
+              });
+
+            PieceManager.Instance.AddPiece(effaone);
+
+        }
+
+        private void AddEffectArea2()
+        {
+            // ReSharper disable once StringLiteralTypo
+            var prefab = _assetBundle.LoadAsset<GameObject>("EffectArea2");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} prefab == null : {prefab == null}"); // This is null?
+#endif
+
+            // ReSharper disable twice IdentifierTypo
+            var effatwo = new CustomPiece(prefab,
+              false,
+              new PieceConfig
+              {
+                  PieceTable = "_CageHammerPieceTable"
+                ,
+                  CraftingStation = ""
+                ,
+                  Enabled = true
+                ,
+                  Requirements = new[]
+                {
+            new RequirementConfig
+            {
+              Item = "Guck"
+              , Amount = 50
+              , Recover = false
+            },
+            new RequirementConfig
+            {
+              Item = "MeadTasty"
+              , Amount = 20
+              , Recover = false
+            }
+                }
+              });
+
+            PieceManager.Instance.AddPiece(effatwo);
 
         }
 
@@ -2074,6 +2837,52 @@ namespace Sporelings
               false,
               new PieceConfig
               {
+                  PieceTable = "_HammerPieceTable"
+                ,
+                  CraftingStation = ""
+                ,
+                  Enabled = true
+                ,
+                  Requirements = new[]
+                {
+            new RequirementConfig
+            {
+              Item = "Iron"
+              , Amount = 90
+              , Recover = false
+            },
+            new RequirementConfig
+            {
+              Item = "FineWood"
+              , Amount = 200
+              , Recover = false
+            }
+                }
+              });
+
+            PieceManager.Instance.AddPiece(guildho);
+
+        }
+
+        
+
+       
+
+        private void AddValkyria()
+        {
+            // ReSharper disable once StringLiteralTypo
+            var prefab = _assetBundle.LoadAsset<GameObject>("HomeGo");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} prefab == null : {prefab == null}"); // This is null?
+#endif
+
+            // ReSharper disable twice IdentifierTypo
+            var hgome = new CustomPiece(prefab,
+              false,
+              new PieceConfig
+              {
                   PieceTable = "_CageHammerPieceTable"
                 ,
                   CraftingStation = ""
@@ -2097,10 +2906,51 @@ namespace Sporelings
                 }
               });
 
-            PieceManager.Instance.AddPiece(guildho);
+            PieceManager.Instance.AddPiece(hgome);
 
         }
 
+        private void AddHoraCube()
+        {
+            // ReSharper disable once StringLiteralTypo
+            var prefab = _assetBundle.LoadAsset<GameObject>("HoraldicCube");
+
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} prefab == null : {prefab == null}"); // This is null?
+#endif
+
+            // ReSharper disable twice IdentifierTypo
+            var guhoracu = new CustomPiece(prefab,
+              false,
+              new PieceConfig
+              {
+                  PieceTable = "_HammerPieceTable"
+                ,
+                  CraftingStation = ""
+                ,
+                  Enabled = true
+                ,
+                  Requirements = new[]
+                {
+            new RequirementConfig
+            {
+              Item = "Iron"
+              , Amount = 10
+              , Recover = false
+            },
+            new RequirementConfig
+            {
+              Item = "ArteMat"
+              , Amount = 10
+              , Recover = false
+            }
+                }
+              });
+
+            PieceManager.Instance.AddPiece(guhoracu);
+
+        }
 
         private void AddSiegeMachine()
         {
@@ -2193,7 +3043,7 @@ namespace Sporelings
 
 
 
-
+        
 
         private void AddBossATrophy()
         {
@@ -2207,6 +3057,118 @@ namespace Sporelings
             ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false)); // Non Craftable version
         }
 
+        private void AddBossBTrophy()
+        {
+            // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
+            // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("BossBTrophy");
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false)); // Non Craftable version
+        }
+
+        private void AddHoralpiece()
+        {
+            // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
+            // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("ArteMat");
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false)); // Non Craftable version
+        }
+
+        private void AddSumToken()
+        {
+            // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
+            // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("SumToken");
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false)); // Non Craftable version
+        }
+
+        private void AddSumTokenTwo()
+        {
+            // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
+            // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("SumTokenTwo");
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false)); // Non Craftable version
+        }
+
+
+
+        private void AddBossBMeat()
+        {
+            // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
+            // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("FoxMeat");
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false)); // Non Craftable version
+        }
+
+        private void Addqitemone()
+        {
+            // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
+            // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("QuestItem1");
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false)); // Non Craftable version
+        }
+
+        private void Addqitemtwo()
+        {
+            // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
+            // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("QuestItem2");
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false)); // Non Craftable version
+        }
+
+        private void Addqitemfour()
+        {
+            // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
+            // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("QuestItem4");
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false)); // Non Craftable version
+        }
+
+        private void AddTimeGearPiece()
+        {
+            // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
+            // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("TimeGearPiece");
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false)); // Non Craftable version
+        }
+
+
+
         private void AddDwarfgun()
        {
            // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
@@ -2219,6 +3181,7 @@ namespace Sporelings
            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false)); // Non Craftable version
        }
 
+        
         
 
 
