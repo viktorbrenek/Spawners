@@ -190,6 +190,11 @@ namespace Sporelings
             AddHoralpiece();
             AddSumToken();
             AddSumTokenTwo();
+            AddBossSumItOne();
+            AddBossSumItTwo();
+            AddBossSumItThree();
+            AddBossSumItFour();
+            AddBossSumItFive();
             // weapons
             AddShroomerSpear();
             AddSageStaff();
@@ -3104,6 +3109,68 @@ namespace Sporelings
 #endif
             ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false)); // Non Craftable version
         }
+
+        private void AddBossSumItOne()
+        {
+            // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
+            // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_BossTokenOne");
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false)); // Non Craftable version
+        }
+
+        private void AddBossSumItTwo()
+        {
+            // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
+            // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_BossTokenTwo");
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false)); // Non Craftable version
+        }
+
+        private void AddBossSumItThree()
+        {
+            // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
+            // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_BossTokenThree");
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false)); // Non Craftable version
+        }
+
+        private void AddBossSumItFour()
+        {
+            // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
+            // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_BossTokenFour");
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false)); // Non Craftable version
+        }
+
+        private void AddBossSumItFive()
+        {
+            // _redcrystal je proměná = načte se z asset bundlu a referuje na přesný název z UNITY = "RedCrystal" = velké písmena, můžou dělat problém
+            // ReSharper disable once StringLiteralTypo - TADY TO NAČTU AŽ JAKO DRUHÝ
+            var itemPrefab = _assetBundle.LoadAsset<GameObject>("VB_BossTokenFive");
+#if DEBUG
+            // ReSharper disable once StringLiteralTypo
+            Jotunn.Logger.LogDebug($"{MethodBase.GetCurrentMethod().Name} itemPrefab == null : {itemPrefab == null}"); // This is null?
+#endif
+            ItemManager.Instance.AddItem(new CustomItem(itemPrefab, false)); // Non Craftable version
+        }
+
+       
 
 
 
